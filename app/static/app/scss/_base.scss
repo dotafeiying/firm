@@ -1,0 +1,120 @@
+a,
+a:focus,
+a:hover {
+  // cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, li, img, body {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+button {
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: 10px;
+    outline: 0;
+}
+p {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: $body-color;
+}
+
+html,body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+// @import "compass/typography/lists/horizontal-list";
+
+// ul.nav{
+//  @include horizontal-list();
+// }
+
+
+
+// html, body, div, span, applet, object, iframe,
+// h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+// a, abbr, acronym, address, big, cite, code,
+// del, dfn, em, img, ins, kbd, q, s, samp,
+// small, strike, strong, sub, sup, tt, var,
+// b, u, i, center,
+// dl, dt, dd, ol, ul, li,
+// fieldset, form, label, legend,
+// table, caption, tbody, tfoot, thead, tr, th, td,
+// article, aside, canvas, details, embed,
+// figure, figcaption, footer, header, hgroup,
+// menu, nav, output, ruby, section, summary,
+// time, mark, audio, video {
+//   margin: 0;
+//   padding: 0;
+//   border: 0;
+//   font: inherit;
+//   font-size: 100%;
+//   vertical-align: baseline;
+// }
+
+// blockquote, body, button, dd, dl, dt, fieldset,
+//  form, h1, h2, h3, h4, h5, h6, hr, input, legend,
+//   li, ol, p, pre, td, textarea, th, ul {
+//     margin: 0;
+//     padding: 0;
+// }
+
+[class^="#{$name}-info"] span.shortLine, [class^="#{$name}-authorize"] span.shortLine, [class^="#{$name}-case-info"] span.shortLine {
+  display: inline-block;
+  width: 70px;
+  height: 10px;
+  border-radius: 8px;
+  background-color: $info-title-color;
+  margin-bottom: 30px;
+}
+[class^="#{$name}-info"] .top1, [class^="#{$name}-authorize"] .top1, [class^="#{$name}-case-info"] .top1 {
+  color: $info-title-color;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+
+.clearfix { 
+  zoom:1;
+  &:after { 
+    content:"";
+    height:0;
+    visibility:hidden;
+    display:block;
+    clear:both;
+  }
+}
+
+.bg-dark {
+  background-color: $bg-dark-color;
+}
+.bg-gray {
+  background-color: $bg-color;
+}

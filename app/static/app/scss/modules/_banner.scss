@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+// 背景
+.#{$name}-banner {
+  padding-top: 210px;
+  padding-bottom: 203px;
+  position: relative;
+  //background: url(../images/bannerBg.png) no-repeat;
+  background: url("../images/bg-pattern.png"), #7b4397;
+  /* fallback for old browsers */
+  background: url("../images/bg-pattern.png"), -webkit-linear-gradient(to left, #328944, #247cdc);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: url(../images/bg-pattern.png), linear-gradient(to left, #328944, #247cdc);
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 100%;
+  overflow-y: hidden;
+  .content {
+    // width: $grid-width;
+    margin: 0 auto;
+    img {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 0;
+    }
+    .line1 {
+      line-height: 72px;
+      font-size: 44px;
+      color: $white;
+      text-shadow: 1px 1px 1px $banner-text-shadow-color;
+      margin-bottom: 30px;
+      z-index: 1;
+      position: relative;
+    }
+    .line2 {
+      line-height: 96px;
+      font-size: 56px;
+      color: $white;
+      text-shadow: 1px 1px 1px $banner-text-shadow-color;
+      margin-bottom: 50px;
+      z-index: 1;
+      position: relative;
+    }
+    .go {
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      height: 50px;
+      width: 160px;
+      border-radius: 5px;
+      color: $baseColor;
+      background-color: $white;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+      &:hover {
+        background-color: $lightColor;
+        color: $white;
+      }
+    }
+    .re {
+      margin-left: 10px;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      height: 50px;
+      width: 160px;
+      border-radius: 5px;
+      color: $white;
+      background-color: transparent;
+      border-color: $white;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+      &:hover {
+        background-color: $lightColor;
+        color: $white;
+        border-color: transparent;
+      }
+    }
+  }
+}
+
+// banner1
+.#{$name}-about-banner {
+  width: 100%;
+  background: url(../images/gybanner.jpg) no-repeat;
+  background-size: 100% 100%;
+  .content {
+    max-width: $grid-width;
+    margin: 0 auto;
+    color: $white;
+    .line1 {
+      padding-top: 130px;
+      margin-bottom: 35px;
+      font-size: 48px;
+    }
+    .line2 {
+      font-size: 32px;
+      padding-bottom: 145px;
+    }
+  }
+}

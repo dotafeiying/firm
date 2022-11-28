@@ -1,0 +1,219 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}关于{% endblock %}
+
+{%  block extend_style %}
+    <style>
+        #allmap {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            margin:0;
+        }
+        .layer img {
+		    width: 800px;
+		    position: absolute;
+		    right: 0px;
+            top: -400px;
+		}
+{#        .banner-row {#}
+{#            height: 400px;#}
+{#            width:100%;#}
+{#        }#}
+    </style>
+{% endblock %}
+
+{%  block extend_js %}
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=GygcEB3Vw3NOYWlHDq1KOOz2vI0C2ZCG"></script>
+{% endblock %}
+
+{% block content %}
+    <!--banner-->
+    <div class="rc-about-banner">
+        <div class="content">
+            <p class="line1">关于力软信息</p>
+            <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+        </div>
+        <div class="banner-row" data-parallel="" style="transform: rotateX(12.8deg) rotateY(1.22101deg);">
+          <div class="layer layer1 right-image hover-image  no-transition" data-zindex="50" style="transform: translateZ(50px);">
+            <img src="https://img.alicdn.com/tfs/TB1y2fteS_I8KJjy0FoXXaFnVXa-1600-880.png" alt="">
+          </div>
+          <div class="layer layer2 right-image hover-image  no-transition" data-zindex="100" style="transform: translateZ(100px);">
+            <img src="https://img.alicdn.com/tfs/TB1DvfteS_I8KJjy0FoXXaFnVXa-1600-880.png" alt="">
+          </div>
+          <div class="layer layer3 right-image hover-image  no-transition" data-zindex="150" style="transform: translateZ(150px);">
+            <img src="https://img.alicdn.com/tfs/TB1R1fyeMvD8KJjy0FlXXagBFXa-1600-880.png" alt="">
+          </div>
+        </div>
+    </div>
+
+    <!--主体部分-->
+    <div class="wrap">
+        <div class="rc-about-info1">
+        <div class="tab-head">
+            <ul>
+                <li class="selected">
+    {#                <img src="http://www.baison.com.cn/custom/ishop/web/theme/default/pc///images/about_icon1.png?1524186558" class="s0">#}
+                    <img src="http://www.baison.com.cn/custom/ishop/web/theme/default/pc///images/about_icon_b1.png?1524186558" class="s1">
+                    <p>公司简介</p>
+                </li>
+                <li>
+                    <img src="http://www.baison.com.cn/custom/ishop/web/theme/default/pc///images/about_icon_b1.png?1524186558" class="s1">
+                    <p>汇款账号</p>
+                </li>
+                <li>
+                    <img src="http://www.baison.com.cn/custom/ishop/web/theme/default/pc///images/about_icon_b1.png?1524186558" class="s1">
+                    <p>资质认证</p>
+                </li>
+                <li>
+                    <img src="http://www.baison.com.cn/custom/ishop/web/theme/default/pc///images/about_icon_b1.png?1524186558" class="s1">
+                    <p>管理团队</p>
+                </li>
+                <li>
+                    <img src="http://www.baison.com.cn/custom/ishop/web/theme/default/pc///images/about_icon_b1.png?1524186558" class="s1">
+                    <p>联系方式</p>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tags show">
+                <div class="custom_show">
+                    <div class="title">
+                        <h2>百胜介绍</h2>
+                        <h3>Introduction Of Baison</h3>
+                    </div>
+                    <div class="content">
+                        <p>上海百胜软件股份有限公司成立于2000年，是国内领先的全渠道零售解决方案服务商，为鞋服、运动、家具、日化、
+                        美妆、珠宝、食品等品牌企业提供管理咨询和信息化解决方案，业务涵盖零售分销、供应链、电子商务、移动应用、
+                        大数据等领域。目前，百胜软件在全国拥有100多家星联服务机构，为客户提供专业及时的服务支持，安全保障30多
+                        万家实体门店和2万多家网上商店的日常运营。移动互联网时代百胜软件致力于为中国零售企业提供全渠道零售解决
+                        方案和运营服务，帮助客户实现新零售转型和商业创新，成就智慧品牌，创造非凡价值。</p>
+                    </div>
+                </div>
+                <div class="custom_show">
+                    <div class="title">
+                        <h2>百胜介绍</h2>
+                        <h3>Introduction Of Baison</h3>
+                    </div>
+                    <div class="content">
+                        <p>上海百胜软件股份有限公司成立于2000年，是国内领先的全渠道零售解决方案服务商，为鞋服、运动、家具、日化、
+                        美妆、珠宝、食品等品牌企业提供管理咨询和信息化解决方案，业务涵盖零售分销、供应链、电子商务、移动应用、
+                        大数据等领域。目前，百胜软件在全国拥有100多家星联服务机构，为客户提供专业及时的服务支持，安全保障30多
+                        万家实体门店和2万多家网上商店的日常运营。移动互联网时代百胜软件致力于为中国零售企业提供全渠道零售解决
+                        方案和运营服务，帮助客户实现新零售转型和商业创新，成就智慧品牌，创造非凡价值。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tags">content2</div>
+            <div class="tags">content3</div>
+            <div class="tags">content4</div>
+            <div class="tags">
+                <div class="custom_show">
+                    <div class="title">
+                        <h2>联系方式</h2>
+    {#                    <h3>Introduction Of Baison</h3>#}
+                    </div>
+                    <div class="content text-left">
+                        <ul>
+                            <li>
+                                <span><i class="fa fa-map-marker"></i> 公司地址 : </span>
+                                <p>上海市浦东新区峨山路91弄100号陆家嘴软件园2号楼5楼(200127)</p>
+                            </li>
+                            <li>
+                                <span><i class="fa fa-phone"></i> 咨询热线 : </span>
+                                <p>400-600-9585，021-50184188</p>
+                            </li>
+                            <li>
+                                <span><i class="fa fa-fax"></i> 传真号码 : </span>
+                                <p>021-50184188</p>
+                            </li>
+                            <li>
+                                <span><i class="fa fa-envelope-open"></i> 电子邮箱 : </span>
+                                <p>baison@baisonmail.com</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="custom_show">
+                    <div class="title">
+                        <h2>地图导航</h2>
+    {#                    <h3>Introduction Of Baison</h3>#}
+                    </div>
+                        <div id="allmap"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block script %}
+    <script>
+    $(document).ready(function(){
+        var $div_li = $(".tab-head li");
+        $div_li.click(function(){
+            $(this).addClass("selected").siblings().removeClass("selected");
+            var index =  $div_li.index(this);
+            $(".tab-content .tags").eq(index).show().siblings().hide();
+            drawMap();
+        })
+    });
+    </script>
+    <script type="text/javascript">
+        // 百度地图API功能
+        function drawMap() {
+            var map = new BMap.Map("allmap");    // 创建Map实例
+            var point = new BMap.Point(114.173353, 30.629037);
+            map.centerAndZoom(point, 15);  // 初始化地图,设置中心点坐标和地图级别
+            var marker = new BMap.Marker(point);  // 创建标注
+            //添加地图类型控件
+            map.addControl(new BMap.MapTypeControl({
+                mapTypes:[
+                    BMAP_NORMAL_MAP,
+                    BMAP_HYBRID_MAP
+                ]}));
+            map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+            map.addOverlay(marker);               // 将标注添加到地图中
+            marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+        }
+
+    </script>
+    <script>
+        $('.rc-about-banner').on('mousemove', function(event){
+            var x              = event.pageX;
+            var y              = event.pageY;
+            var bgCentralityX  = $(window).width() / 2;    //    背景图的中心点
+            var bgOffsetX      = (x - bgCentralityX) / 30;
+
+            var imgCentralityX = $('.layer1').offset().left + ($('.layer1').width() / 2);
+            var imgCentralityY = $('.banner-row').height() / 2;
+
+            var imgOffsetX     = (x - imgCentralityX) / 10;
+            var imgOffsetY     = (y - imgCentralityY) / 10;
+            var imgOffsetX2     = (x - imgCentralityX) / 20;
+            var imgOffsetY2     = (y - imgCentralityY) / 20;
+            var imgOffsetX3     = (x - imgCentralityX) / 30;
+            var imgOffsetY3     = (y - imgCentralityY) / 30;
+
+            // $('.parallax__bg-img').css('left', -bgOffsetX);
+            $('.layer1 img').css({
+                right: 71-imgOffsetX,
+                top: -400+imgOffsetY
+            });
+            $('.layer2 img').css({
+                right: 71-imgOffsetX2,
+                top: -400+imgOffsetY2
+            });
+            $('.layer3 img').css({
+                right: 71-imgOffsetX3,
+                top: -400+imgOffsetY3
+            });
+        });
+    </script>
+
+{% endblock %}
+

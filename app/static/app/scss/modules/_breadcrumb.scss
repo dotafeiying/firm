@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+// breadcrumb
+.breadcrumb {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #d7d8d9;
+  li {
+    float: left;
+    a {
+      color: $baseColor;
+    }
+  }
+}

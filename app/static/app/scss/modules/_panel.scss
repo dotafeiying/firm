@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+// pannel
+.panel ul {
+  $panel-margin-right: ($grid-width - $panel-width*4)/3;
+  width: $grid-width + $panel-margin-right;
+  li {
+    width: $panel-width;
+    height: 142px;
+    border: 1px solid #eaeaea;
+    float: left;
+    margin: 0 $panel-margin-right 20px 0;
+    &:hover {
+      border-color: #00a2ca;
+      .pic {
+        display: none;
+      }
+      .pic2 {
+        display: block;
+      }
+    }
+    a {
+      display: block;
+      width: $panel-width;
+      height: 142px;
+      .pic {
+        width: 46px;
+        height: 46px;
+        margin-left: 30px;
+        margin-top: 39px;
+        float: left;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .pic2 {
+        display: none;
+      }
+      .right {
+        float: right;
+        margin-top: 39px;
+        width: 179px;
+        height: 103px;
+        .name {
+          height: 18px;
+          line-height: 18px;
+          font-size: 18px;
+          color: #333;
+          margin-bottom: 8px;
+        }
+        .info {
+          line-height: 20px;
+          font-size: 12px;
+          color: #666;
+        }
+      }
+    }
+  }
+}
+
+/*-------------------------------------------------
+SMACSS: PANEL - 适配屏幕
+-------------------------------------------------*/
+// media查询
+@media only screen and (max-width: $grid-width) {
+  .panel ul {
+    width: 100%;
+  }
+}

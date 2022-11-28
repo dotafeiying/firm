@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+// detail
+.rc-detail-info1 {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 60px 80px;
+  background: $white;
+}
+
+/*-------------------------------------------------
+SMACSS: DETAIL - 适配屏幕
+-------------------------------------------------*/
+// media查询
+@media only screen and (max-width: $grid-width) {
+  .rc-detail-info1 {
+    padding: 60px 20px;
+  }
+}

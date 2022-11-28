@@ -1,0 +1,80 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}行业客户-详情页{% endblock %}
+
+{% block extend_style %}
+
+{% endblock %}
+
+{% block extend_js %}
+
+{% endblock %}
+
+{% block content %}
+    <!--banner-->
+    <div class="wrap">
+        <div class="rc-about-banner">
+            <div class="content">
+                <p class="line1">关于力软信息</p>
+                <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+            </div>
+        </div>
+    </div>
+
+    <!--主体部分-->
+
+    <div class="wrap clearfix bg-gray" style="overflow: hidden">
+        <div class="inwrap">
+            <div class="rc-detail-info1">
+                <div class="breadcrumb clearfix">
+                    <ul>
+                        <li><a href="{% url 'app:home' %}"><i class="fa fa-home"></i>首页</a>&nbsp;&gt;&nbsp;</li>
+                        <li><a href="{% url 'app:customer' %}">行业客户</a>&nbsp;&gt;&nbsp;</li>
+                        <li><a href="javascript:void(0)">{{ customer.type.name }}</a>&nbsp;&gt;&nbsp;</li><span>{{ customer.title }}</span>
+                    </ul>
+                </div>
+                <article class="article clearfix">
+                  <header>
+                    <h1 class="text-center">{{ customer.title }}</h1>
+                    <dl class="dl-inline">
+                      <dt>来源：</dt>
+                      <dd>来自成功案例</dd>
+                      <dt>最后修订：</dt>
+                      <dd>{{ customer.update_time| date:"Y-m-d H:m:s" }}</dd>
+                      <dt></dt>
+                      <dd class="pull-right"><span>软诚客户部整理</span></dd>
+                    </dl>
+                    <section class="abstract">
+                      <p><strong>摘要：</strong>HTML5是HTML最新的修订版本，2014年10月由万维网联盟（W3C）完成标准制定。目标是替换1999年所制定的HTML 4.01和XHTML 1.0标准，以期能在互联网应用迅速发展的时候，使网络标准达到匹配当代的网络需求。广义论及HTML5时，实际指的是包括HTML、CSS和JavaScript在内的一套技术组合。</p>
+                    </section>
+                  </header>
+                  <section class="content">
+                    {{ customer.content | safe }}
+{#                    {{ case.content | safe | truncatechars_html:54 }}#}
+                  </section>
+                  <footer>
+{#                    <p class="pull-right text-muted">本文在知识共享 署名-相同方式共享 3.0协议之条款下提供。</p>#}
+{#                    <p class="text-important">本文节选自 Wikipedia HTML5 词条。</p>#}
+                    <ul class="pager pager-justify">
+                        {% if customer.prev_customer %}
+                            <li class="previous"><a href="{{ customer.prev_customer.get_absolute_url }}"><i class="fa fa-long-arrow-left"></i> 上一篇：{{ customer.prev_customer.title }}</a></li>
+                        {% endif %}
+                        {% if customer.next_customer %}
+                            <li class="next disabled"><a href="{{ customer.next_customer.get_absolute_url }}">下一篇：{{ customer.next_customer.title }} <i class="fa fa-long-arrow-right"></i></a></li>
+                        {% endif %}
+                    </ul>
+                  </footer>
+                </article>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+

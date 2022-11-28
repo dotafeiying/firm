@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+// 关于
+.#{$name}-about-info1 {
+  .tab-head  {
+    // width: 1280px;
+    margin: 0 auto;
+    ul {
+      justify-content: space-around;
+      display: flex;
+      margin-top: 70px;
+      padding: 0 120px 20px;
+      box-shadow: 0 5px 5px 0 $about-info1-shadow-color;
+      li {
+        width: 300px;
+        margin: 0 auto;
+        float: left;
+        text-align: center;
+        cursor: pointer;
+        p {
+          margin-top: 35px;
+        }
+        &.selected {
+          color: $baseColor;
+        }
+      }
+    }
+  }
+  .tab-content {
+    max-width: $grid-width - 290;
+    clear: both;
+    margin: 0 auto;
+    padding: 40px 0 80px;
+    .tags {
+      display: none;
+      //text-align: center;
+      padding-bottom: 70px;
+      position: relative;
+      &.show {
+        display: block;
+      }
+      .custom_show {
+        padding-bottom: 70px;
+        border-bottom: 1px solid #eee;
+      }
+      .title {
+        text-align: center;
+        h2 {
+          color: $info-title-color;
+          font-size: 36px;
+        }
+      }
+      .content {
+        position: relative;
+        p {
+          line-height: 2;
+          letter-spacing: 0.3rem;
+          text-align: left;
+          color: $info-line2-color;
+        }
+        ul {
+          li {
+            display: inline-block;
+            width: 100%;
+          }
+          * {
+            display: inline-block;
+          }
+        }
+        img {
+          text-align: right;
+          display: inline-block;
+          margin-right: 20px;
+          width: 70%;
+        }
+      }
+    }
+  }
+}

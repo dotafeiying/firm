@@ -1,0 +1,678 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}首页{% endblock %}
+
+{%  block extend_style %}
+    <link rel="stylesheet" type="text/css" href="{% static "app/css/tabs.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "app/css/tabstyles.css" %}">
+    <style>
+        #logo-1 {
+            display:none;
+        }
+    </style>
+{% endblock %}
+
+{%  block extend_js %}
+    <script src="/static/app/js/cbpFWTabs.js?v=ae06d9cbba"></script>
+{% endblock %}
+
+{% block content %}
+    <!--banner-->
+    <div class="wrap">
+        <div class="rc-banner">
+        <div class="content  inwrap">
+            <img src="/static/app/images/banner1.png" alt="">
+            <div class="line1">这才是程序员的开发平台</div>
+            <div class="line2">快速+易操作一个都不能少</div>
+            <button class="go" onclick="window.open('http://learun.cn:8090/');">立即体验</button>
+            <button class="re" onclick="location.href = '/Home/Register';">获取账号</button>
+        </div>
+    </div>
+    </div>
+
+    <!--幻灯片-->
+    <div class="fullSlide">
+        <div class="bd">
+            <ul>
+             <li style="background-color: #CCE1F3;">
+                <img src="/static/app/images/1.jpg">
+                <div class="siteWidth">
+                    <p class="txt" style="color:#3FA65D"> 全国各地免费预约挂号平台<br /> 解决看病难，我们一直在努力！ <span class="btn">查看详情</span> </p>
+                    <a target="_blank" href="http://www.superslide2.com"></a>
+                </div>
+             </li>
+             <li style="background-color: #BCE0FF;">
+                <img src="/static/app/images/2.jpg">
+                <div class="siteWidth">
+                    <p class="txt" style="color:#3E92D2"> 随时随地挂号、预约医生<br /> 方便就诊 <span class="btn">了解详情</span> </p>
+                    <a target="_blank" href="http://www.superslide2.com"></a>
+                </div>
+             </li>
+             <li style="background-color: #C4CFEB;">
+                <img src="/static/app/images/3.jpg">
+                <div class="siteWidth">
+                    <p class="txt" style="color:#4D5F85"> 挂号网作为卫生部新闻宣传中心/中国健康教育中心<br /> 信息发布平台权威报道人感染H7N9型禽流感疫情 <span class="btn">了解详情</span> </p>
+                    <a target="_blank" href="http://www.superslide2.com"></a>
+                </div>
+             </li>
+             <li style="background-color: #C5EDFD;">
+                <img src="/static/app/images/4.jpg">
+                <div class="siteWidth">
+                    <p class="txt" style="color:#17A5D7"> 面向全国移动手机用户提供服务<br /> 帮助用户准确就医、正确健康保健 <span class="btn">了解详情</span> </p>
+                    <a target="_blank" href="http://www.superslide2.com"></a>
+                </div>
+             </li>
+            </ul>
+        </div>
+        <div class="hd">
+            <ul>
+                <li class="">1</li>
+                <li class="">2</li>
+                <li class="on">3</li>
+                <li class="">4</li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+     jQuery(".fullSlide").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"topLoop",  autoPlay:true, autoPage:true, trigger:"click" });
+    </script>
+
+    <div class="wrap">
+        <div class="inwrap">
+            <div class="rc-info1">
+                <ul>
+                    <li>
+                       <div class="img"></div>
+                        <p class="line1">在线体验</p>
+                        <p class="line2">30天免费体验机会<br>新用户专享</p>
+                    </li>
+                    <li>
+                        <div class="img"></div>
+                        <p class="line1">推荐有礼</p>
+                        <p class="line2">推荐朋友成功购买后<br>享邀请收益</p>
+                    </li>
+                    <li>
+                        <div class="img"></div>
+                        <p class="line1">五星级服务</p>
+                        <p class="line2">专业技术人员一对一<br>提供服务支持</p>
+                    </li>
+                    <li>
+                        <div class="img"></div>
+                        <p class="line1">购买送礼</p>
+                        <p class="line2">买专业版以上框架系统<br>送精美礼品一份</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="wrap bg-dark">
+        <div class="inwrap">
+            <div class="rc-case-info1">
+                <div class="content">
+                    <ul>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底.有情怀的公司，将关爱客户进行到底</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底.有情怀的公司，将关爱客户进行到底</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底.</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="inwrap">
+            <div class="rc-info2">
+                <span class="shortLine"></span>
+                <p class="top1">深夜不撸码，产品顶呱呱</p>
+                <p class="top2">企业信息化的最佳选择，外包公司的交付神器</p>
+                <div class="middle">
+                    <ul>
+                        <li>
+                            <p class="line1">
+                                No.1
+                            </p>
+                            <p class="line2">
+                                技术支持服务口碑第一
+                            </p>
+                        </li>
+                        <li>
+                            <p class="line1">
+                                <span class="timer count-title count-number" data-to="8" data-speed="1000">8</span>年
+                            </p>
+                            <p class="line2">
+                                8年专注快速开发平台
+                            </p>
+                        </li>
+                        <li>
+                            <p class="line1">
+                                <span class="timer count-title count-number" data-to="6" data-speed="1000">6</span>万+
+                            </p>
+                            <p class="line2">
+                                用户数超过60000人
+                            </p>
+                        </li>
+                        <li>
+                            <p class="line1">
+                                +<span class="timer count-title count-number" data-to="50" data-speed="1000">50</span>%
+                            </p>
+                            <p class="line2">
+                                连续五年客户量增长50%
+                            </p>
+                        </li>
+                        <li>
+                            <p class="line1">
+                                <span class="timer count-title count-number" data-to="90" data-speed="1000">90</span>%+
+                            </p>
+                            <p class="line2">
+                                开发效率提高90%
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="inwrap">
+            <div class="rc-info3">
+                <img class="ali-product-logo" src="https://img.alicdn.com/tfs/TB1EGNRRVXXXXazXVXXXXXXXXXX-271-123.png">
+                <h1 class="title">全球领先</h1>
+                <a class="subtitle" target="_blank" href="">计算、存储、网络、安全、大数据、人工智能，普惠科技助您飞跃发展</a>
+                <ul>
+                    <li class="sep">
+                       <div class="img"></div>
+                        <p class="line1">在线体验</p>
+                        <p class="line2">30天免费体验机会<br>新用户专享</p>
+                    </li>
+                    <li class="sep">
+                        <div class="img"></div>
+                        <p class="line1">推荐有礼</p>
+                        <p class="line2">推荐朋友成功购买后<br>享邀请收益</p>
+                    </li>
+                    <li class="sep">
+                        <div class="img"></div>
+                        <p class="line1">五星级服务</p>
+                        <p class="line2">专业技术人员一对一<br>提供服务支持</p>
+                    </li>
+                    <li class="sep">
+                        <div class="img"></div>
+                        <p class="line1">购买送礼</p>
+                        <p class="line2">买专业版以上框架系统<br>送精美礼品一份</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="rc-info4">
+        <h1 class="title">全球领先、安全、产品</h1>
+        <a class="subtitle" target="_blank" href="https://www.aliyun.com/about/global">计算、存储、网络、安全、大数据、人工智能，普惠科技助您飞跃发展</a>
+        <div class="tabs tabs-style-circle">
+            <nav>
+                <ul>
+                    <li><a href="#section-circle-1" class="icon icon-plug"><span>安全</span></a></li>
+                    <li><a href="#section-circle-2" class="icon icon-gift"><span>人工智能</span></a></li>
+                    <li><a href="#section-circle-3" class="icon icon-box"><span>大数据应用</span></a></li>
+                    <li><a href="#section-circle-4" class="icon icon-date"><span>应用服务</span></a></li>
+                    <li><a href="#section-circle-5" class="icon icon-plane"><span>移动应用</span></a></li>
+                </ul>
+            </nav>
+            <div class="content-wrap">
+                <section id="section-circle-1">
+                    <div class="ali-product-content active text-left" id="aaa" style="display: block; position: static; visibility: visible;">
+                          <a class="ali-product-normal-item  left-most" href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              对象存储 OSS
+                            </div>
+                            <div class="ali-product-normal-item-description">比传统存储成本下降25%~75%的强安全企业级存储</div>
+                              <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item  " href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              文件存储 NAS
+                            </div>
+                            <div class="ali-product-normal-item-description">支持NFS、CIFS协议的可共享文件存储</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item right-most " href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              表格存储 TableStore
+                            </div>
+                            <div class="ali-product-normal-item-description">适用于社交、金融、物联网百万并发的NoSQL</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item  left-most" href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              块存储
+                            </div>
+                            <div class="ali-product-normal-item-description">随机访问能力高达2万IOPS的块级存储</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item  " href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              归档存储 OAS
+                            </div>
+                            <div class="ali-product-normal-item-description">适用于历史数据归档，强安全、高持久低成本存储</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item right-most " href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              云存储网关
+                            </div>
+                            <div class="ali-product-normal-item-description">云上云下部署，轻松对接云存储，无限空间</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item  left-most" href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              闪电立方
+                            </div>
+                            <div class="ali-product-normal-item-description">海量离线数据迁移服务，PB级数据只需要一周</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item  " href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              混合云阵列
+                            </div>
+                            <div class="ali-product-normal-item-description">本地部署的高性能存储设备，与云端无缝连接</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item right-most " href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              智能云相册（公测中）
+                            </div>
+                            <div class="ali-product-normal-item-description">为影像类应用提供一站式解决方案</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item  left-most" href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              全站加速
+                                <img src="https://img.alicdn.com/tps/TB1pS2YMVXXXXcCaXXXXXXXXXXX-56-24.png">
+                            </div>
+                            <div class="ali-product-normal-item-description">适用于动静混合型、纯动态型站点或应用的内容分发加速服务</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item  " href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              安全加速 SCDN
+                                <img src="https://img.alicdn.com/tps/TB1pS2YMVXXXXcCaXXXXXXXXXXX-56-24.png">
+                            </div>
+                            <div class="ali-product-normal-item-description">快速建立分布式的安全加速网络</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item right-most " href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              PCDN
+                            </div>
+                            <div class="ali-product-normal-item-description">适用于点播、直播、大文件的边缘节点分发网络</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                          <a class="ali-product-normal-item  left-most" href="" target="_blank">
+                            <div class="ali-product-normal-item-name">
+                              CDN
+                            </div>
+                            <div class="ali-product-normal-item-description">常用于视频、图片、文件加速的跨域网络分发</div>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                    </div>
+                </section>
+                <section id="section-circle-2"><p>2</p></section>
+                <section id="section-circle-3"><p>3</p></section>
+                <section id="section-circle-4"><p>4</p></section>
+                <section id="section-circle-5"><p>5</p></section>
+            </div><!-- /content -->
+        </div>
+    </div>
+    </div>
+
+    <div class="wrap">
+        <div class="inwrap">
+            <div class="rc-info5">
+            <h1 class="title">全球领先、安全、稳定的云计算产品</h1>
+            <a class="subtitle" target="_blank" href="https://www.aliyun.com/about/global">计算、存储、网络、安全、大数据、人工智能，普惠科技助您飞跃发展</a>
+            <div class="content">
+                <ul>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class='normal' href='#'>
+                        <img src="/static/app/images/black1-576-840.jpg" width="100%" height="100%"  alt="" class="normal-img">
+                      </a>
+                      <div class='info'>
+                        <h3>Single-origin coffee whatever</h3>
+                        <p>Williamsburg tofu polaroid, 90's Bushwick irony locavore ethnic meh messenger bag Truffaut jean shorts.</p>
+                      </div>
+                    </li>
+                  </ul>
+            </div>
+
+        </div>
+        </div>
+    </div>
+
+    <div class="wrap bg-gray">
+        <div class="inwrap">
+            <div class="rc-info6">
+            <div class="y-row rc-main-head">
+              <h1>大咖云集，知识分享的开发者技术社区</h1>
+
+              <a class="index-info" href="https://yq.aliyun.com" target="_blank">实战干货、在线直播、专家问答、技术论坛，学习，成长，分享，共建</a>
+
+            </div>
+            <div class="y-row rc-main-content clearfix">
+
+              <div class="rc-content-item">
+                <a href="https://yunqi.aliyun.com/2018/shenzhen/review" target="_blank">
+                  <div class="item-box">
+                    <div class="img-area">
+                      <img src="https://img.alicdn.com/tfs/TB1R5Qnm21TBuNjy0FjXXajyXXa-760-460.jpg" alt="" class="normal-img">
+                    </div>
+                    <div class="box-header">
+                      <p>
+                        【精彩】开年首秀-2018云栖大会·深圳峰会回顾！
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <div class="item-appendix">
+                  <ul>
+                    <li>
+                      <a href="https://yq.aliyun.com/topic/134" target="_blank">【揭秘】阿里云媒体处理技术全解</a>
+                    </li>
+                    <li>
+                      <a href="https://yq.aliyun.com/articles/459345" target="_blank">【案例合集】阿里云场景实践研究合集</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="rc-content-item">
+                <a href="https://yq.aliyun.com/roundtable/65911" target="_blank">
+                  <div class="item-box">
+                    <div class="img-area">
+                      <img src="https://img.alicdn.com/tfs/TB18jTVdwmTBuNjy1XbXXaMrVXa-760-460.jpg" alt="" class="normal-img">
+                    </div>
+                    <div class="box-header">
+                      <p>
+                        【聚能聊】羊毛党横行，如何应对短信验证码攻击
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <div class="item-appendix">
+                  <ul>
+                    <li>
+                      <a href="https://yq.aliyun.com/roundtable/65417" target="_blank">【聚能聊】如何培养对编程开发的兴趣</a>
+                    </li>
+                    <li>
+                      <a href="https://yq.aliyun.com/roundtable/65401" target="_blank">【聚能聊】2018全球十大突破性技术，你知道吗？</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="rc-content-item">
+                <a href="https://yq.aliyun.com/download/2575" target="_blank">
+                  <div class="item-box">
+                    <div class="img-area">
+                      <img src="https://img.alicdn.com/tfs/TB1.sShdTtYBeNjy1XdXXXXyVXa-760-460.png" alt="" class="normal-img">
+                    </div>
+                    <div class="box-header">
+                      <p>
+                        【重磅干货】阿里技术参考图册-算法篇
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <div class="item-appendix">
+                  <ul>
+                    <li>
+                      <a href="https://yq.aliyun.com/topic/132" target="_blank">【详解】全面了解阿里云对象存储OSS</a>
+                    </li>
+                    <li>
+                      <a href="https://yq.aliyun.com/articles/576356" target="_blank">【下载】云栖大会·深圳峰会PDF资料</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="rc-info7">
+            <div class="context">
+              <p class="register-desc">
+                40+ 云产品免费使用，为您提供0门槛上云实践机会
+              </p>
+              <a href="">
+                <button class="register-btn">
+                  立即注册
+                </button>
+              </a>
+            </div>
+            <div class="rc-main-register"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        (function(){
+          pos = 0;
+          ticking = false;
+          var header = document.querySelector("#myScrollspy");
+          window.addEventListener("scroll", function(e){
+            pos = window.scrollY;
+            if(pos > 100&&!ticking){
+              header.classList.add("rc-headWhite");
+              $('#logo-2').hide();
+              $('#logo-1').show();
+              ticking = true;
+            }
+            if(pos < 100 && ticking){
+              header.classList.remove("rc-headWhite");
+              ticking = false;
+              $('#logo-2').show();
+              $('#logo-1').hide();
+            }
+          });
+        })();
+    </script>
+    <script>
+        (function() {
+            [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+                new CBPFWTabs( el );
+            });
+        })();
+    </script>
+    <script>
+        var nodes  = document.querySelectorAll('.rc-info5 li'),
+            _nodes = [].slice.call(nodes, 0);
+
+        var getDirection = function (ev, obj) {
+            var w = obj.offsetWidth,
+                h = obj.offsetHeight,
+                x = (ev.pageX - obj.offsetLeft - (w / 2) * (w > h ? (h / w) : 1)),
+                y = (ev.pageY - obj.offsetTop - (h / 2) * (h > w ? (w / h) : 1)),
+                d = Math.round( Math.atan2(y, x) / 1.57079633 + 5 ) % 4;
+
+            return d;
+        };
+
+        var addClass = function ( ev, obj, state ) {
+            var direction = getDirection( ev, obj ),
+                class_suffix = "";
+
+            obj.className = "";
+
+            switch ( direction ) {
+                case 0 : class_suffix = '-top';    break;
+                case 1 : class_suffix = '-right';  break;
+                case 2 : class_suffix = '-bottom'; break;
+                case 3 : class_suffix = '-left';   break;
+            }
+
+            obj.classList.add( state + class_suffix );
+        };
+
+        // bind events
+        _nodes.forEach(function (el) {
+            el.addEventListener('mouseover', function (ev) {
+                addClass( ev, this, 'in' );
+            }, false);
+
+            el.addEventListener('mouseout', function (ev) {
+                addClass( ev, this, 'out' );
+            }, false);
+        });
+    </script>
+{% endblock %}

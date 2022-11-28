@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{#    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">#}
+    {# 网页标题内容块 #}
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static "app/luxijie_favicon.ico" %}" type="image/x-icon">
+    <link rel="icon" href="{% static "app/luxijie_favicon.ico" %}" type="image/x-icon">
+{#    <script type="text/javascript" src="{% static 'app/js/jquery-1.11.1.min.js?v=8101d596b2' %}"></script>#}
+    <script type="text/javascript" src='/static/app/js/jquery-1.11.1.min.js?v=8101d596b2'></script>
+    <script src="/static/app/js/jquery.SuperSlide.2.1.1.js?v=cd674d9e02"></script>
+    <script src="/static/app/js/upCounter.js?v=ac63e7a740"></script>
+    {%  block extend_js %}{% endblock %}
+{#    <script type="text/javascript" src="{% static "app/bootstrap/js/bootstrap.min.js" %}"></script>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static "app/bootstrap/css/bootstrap.min.css" %}">#}
+{#    <link href="{% static "app/css/screen.css?v=f9a91b3b92" %}" media="print" rel="stylesheet" type="text/css" />#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'app/css/screen.css?v=f9a91b3b92' %}">#}
+    <link rel="stylesheet" type="text/css" href='/static/app/css/screen.css?v=f9a91b3b92'>
+{#    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css?v=c94de13c6e' %}">#}
+    <link rel="stylesheet" type="text/css" href='/static/app/css/style.css?v=c94de13c6e'>
+    <link href="/static/app/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    {%  block extend_style %}{% endblock %}
+    <style>
+        /*导航栏滚动样式*/
+        .rc-headWhite{
+        background-color: white;
+        color: #000;
+        box-shadow: rgba(0,0,0,0.06) 0 0 10px 2px;
+        }
+    </style>
+
+</head>
+<body>
+    {% block header %}
+        <!--导航栏-->
+        <div class="wrap">
+            <div class="rc-head" id="myScrollspy">
+                <div class="content">
+                    <a class="rc-head-logo" href="http://www.learun.cn" title="快速开发平台,快速开发框架,工作流,Web可视化开发,路希捷网络科技">
+                        <img class="logo" id="logo-1" width="157px" height="23px" src="/static/app/images/logo.png" alt="路希捷网络科技,ASP.NET框架,开源平台">
+                        <img class="logo" id="logo-2" src="/static/app/images/logowhite.png" alt="路希捷网络科技,ASP.NET框架,开源平台">
+
+                    </a>
+                    <ul id="menu1" class="rc-head-nav">
+                        <li data-menuanchor="page1" class="nav-item nav-item-home">
+                            <a href="/app/" title="工作流,Web可视化开发,路希捷网络科技" class="active">首页</a>
+                        </li>
+                        <li class="nav-item nav-item-authorize">
+                            <a href="/app/service" title="产品中心,敏捷开发,硬件设备,力软信息,快速开发平台,快速开发框架">技术服务</a>
+                        </li>
+                        <li class="nav-item nav-item-customer">
+                            <a href="/app/customer" title="行业客户,矿业石油,教育培训,科研机构,快递物">行业客户</a>
+                        </li>
+                        <li class="nav-item nav-item-case">
+                            <a href="/app/case/" title="成功案例,行业资讯,常见问题,路希捷网络科技,快速开发平台,快速开发框架">成功案例</a>
+                        </li>
+                        <li class="nav-item nav-item-updateLog">
+                            <a href="/Home/UpdateLog" title="成功案例,行业资讯,常见问题,路希捷网络科技,快速开发平台,快速开发框架">升级日志</a>
+                            <img src="/static/app/images/hot.gif" alt="">
+                        </li>
+                        <li class="nav-item nav-item-about">
+                            <a href="/app/about/" title="专业从事开发框架研发,企业应用系统开发,高新技术企业,路希捷网络科技,快速开发平台,快速开发框架">关于力软</a>
+                        </li>
+                    </ul>
+                    <div class="rc-head-btn">
+                        <a id="login" class="btn-login" href="http://learun.cn:8090/" target="_blank" title="路希捷网络科技,快速开发平台,快速开发框架">登录</a>
+                        <a id="signup" class="btn-register" href="/Home/Register" title="路希捷网络科技,快速开发平台,快速开发框架">注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+
+
+    {% block content %}{% endblock %}
+
+    {% block footer %}
+        <!-- footer -->
+        <div class="rc-footer">
+            <div class="slogan">
+                <img src="/static/app/images/logo.png" alt="力软信息,ASP.NET框架,开源平台">
+                <span>让开发变得更简单</span>
+            </div>
+            <div class="tail">
+                <div class="lrwell">
+                    <div class="well-text">
+                        <span class="title">产品</span>
+                        <p><a href="http://learun.cn:8090/" target="_blank" title="力软信息,快速开发平台,快速开发框架">敏捷开发平台</a></p>
+                    </div>
+                    <div class="well-text">
+                        <span class="title">行业客户</span>
+                        <p><a href="/Home/CaseContent?id=demo7" title="力软信息,快速开发平台,快速开发框架">建筑/房地产</a></p>
+                        <p><a href="/Home/CaseContent?id=demo6" title="力软信息,快速开发平台,快速开发框架">教育培训</a></p>
+                        <p><a href="/Home/CaseContent?id=demo10" title="力软信息,快速开发平台,快速开发框架">科研机构</a></p>
+                        <p><a href="/Home/CaseContent?id=demo8" title="力软信息,快速开发平台,快速开发框架">航天航空</a></p>
+                    </div>
+                    <div class="well-text more">
+                        <p><a href="/Home/CaseContent?id=demo11" title="力软信息,快速开发平台,快速开发框架">快递物流</a></p>
+                        <p><a href="/Home/CaseContent?id=demo5" title="力软信息,快速开发平台,快速开发框架">矿产石油</a></p>
+                        <p><a href="/Home/CaseContent?id=demo9" title="力软信息,快速开发平台,快速开发框架">电力电气</a></p>
+                        <p><a href="/Home/CaseContent?id=demo12" title="力软信息,快速开发平台,快速开发框架">机械制造</a></p>
+                    </div>
+                    <div class="well-text">
+                        <span class="title">关于力软</span>
+                        <p><a href="/Home/About?id=0" title="力软信息,快速开发平台,快速开发框架">公司简介</a></p>
+                        <p><a href="/Home/About?id=2" title="力软信息,快速开发平台,快速开发框架">加入我们</a></p>
+                        <p><a href="/Home/About?id=3" title="力软信息,快速开发平台,快速开发框架">使用条款</a></p>
+                        <p><a href="/Home/About?id=4" title="力软信息,快速开发平台,快速开发框架">汇款帐号</a></p>
+                    </div>
+                    <div class="well-text">
+                        <span class="title">联系我们</span>
+                        <p>总部：13671911811</p>
+                        <p>分部：0512-67227790</p>
+                    </div>
+                    <div class="code">
+                        <div class="wechat" style="float: left; margin-right: 50px;">
+
+                        </div>
+                        <div class="app" style="float: left;margin-right: 50px;">
+                            <div class="img">
+                                <p>微信公众号</p>
+                                <a>
+                                    <img src="/static/app/images/wechat.jpg" alt="力软信息,ASP.NET框架,开源平台">
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="icp">
+                    <span>Copyright © 2018 上海力软信息技术有限公司 版权所有 备案号：沪ICP备14034717号</span>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+
+
+</body>
+<script>
+    $(".canvas1").each(function(index){
+        var ctx = $(this)[0].getContext("2d");
+        ctx.fillStyle = "#18b9e7";
+        ctx.fillRect(0, 0, 49, 49);
+{#            ctx.strokeStyle = "white";#}
+{#            ctx.font="23px Arial Black";#}
+{#            ctx.textAlign = "center";#}
+{#            ctx.textBaseline = "middle";#}
+{#            ctx.strokeText(index+1, 24, 24);#}
+
+
+    })
+    $(".canvas2").each(function(index){
+        var ctx = $(this)[0].getContext("2d");
+        ctx.strokeStyle = '#18b9e7';
+        ctx.moveTo(0,0);
+        ctx.lineTo(60,0);
+        ctx.lineTo(60,60);
+        ctx.lineTo(0,60);
+        ctx.lineTo(0,0);
+        ctx.stroke();
+        ctx.fillStyle = '#fff';
+        ctx.font="23px Arial Black";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(index+1, 15, 15);
+    })
+
+</script>
+{% block script %}{% endblock %}
+</html>

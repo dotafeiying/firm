@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+.rc-customer-info1 {
+
+  //margin-bottom: 120px;
+  .tab-nav {
+    padding: 7px 0;
+    li {
+      padding: 0 20px;
+      margin: 12px 0;
+      float: left;
+      font-size: 14px;
+      color: #373d41;
+      cursor: pointer;
+      line-height: 16px;
+      border-left: 1px solid #ebecec;
+      transition: all .3s;
+      &:hover {
+        color: $aliColor;
+      }
+    }
+    .tab-all {
+      border: none;
+    }
+    .active {
+      color: $aliColor;
+    }
+  }
+  .tab-content {
+      margin-top: 0;
+      .tab-item {
+        //background-color: $white;
+        .customer-list {
+          margin-bottom: 15px;
+          background: $white;
+          position: relative;
+          &:hover {
+            box-shadow: 0 0 15px #ccc;
+          }
+          .all-link {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+          }
+          .customer-list-box {
+            clear: both;
+            padding: 25px 0;
+            .list-left {
+              float: left;
+              width: 25%;
+              .cell-box {
+                width: 100%;
+                height: 194px;
+                min-height: 193px;
+                display: table;
+                a {
+                  position: relative;
+                  overflow: hidden;
+                  display: table-cell;
+                  vertical-align: middle;
+                }
+                img {
+                  display: block;
+                  height: 100%;
+                  width: 100%;
+                  max-width: 189px;
+                  max-height: 189px;
+                  margin: 0 auto;
+                }
+              }
+            }
+            .list-right {
+              float: left;
+              width: 75%;
+              padding: 0 30px;
+              border-left: 1px solid #e2e2e2;
+              font-size: 14px;
+              .public {
+                margin-bottom: 4px;
+              }
+              em {
+                float: left;
+                font-size: 14px;
+                color: #969696;
+                line-height: 24px;
+                font-style: normal;
+                width: 75px;
+              }
+              span {
+                float: left;
+                color: #626262;
+                font-size: 14px;
+                line-height: 24px;
+                overflow: hidden;
+                width: auto;
+                //max-width: 748px!important;
+              }
+            }
+          }
+        }
+      }
+  }
+}
+
+/*-------------------------------------------------
+SMACSS: CUSTOMER - 适配屏幕
+-------------------------------------------------*/
+// media查询
+@media only screen and (min-width: $grid-width) {
+  .rc-customer-info1 .list-right .intro span {
+    max-width: 748px!important;
+  }
+}
+
+@media only screen and (max-width: $grid-width) {
+  .rc-customer-info1 .list-right .intro span {
+    max-width: 614px!important;
+  }
+}
+
+

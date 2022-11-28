@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static "app/js/jquery-1.11.1.min.js?v=8101d596b2" %}"></script>
+    <script src="/static/app/js/jquery.SuperSlide.2.1.1.js?v=cd674d9e02"></script>
+{#    <script type="text/javascript" src="{% static "app/bootstrap/js/bootstrap.min.js" %}"></script>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static "app/bootstrap/css/bootstrap.min.css" %}">#}
+{#    <link href="{% static "app/css/screen.css?v=f9a91b3b92" %}" media="print" rel="stylesheet" type="text/css" />#}
+    <link rel="stylesheet" type="text/css" href="{% static "app/css/screen.css?v=f9a91b3b92" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "app/css/style.css?v=c94de13c6e" %}">
+    <style>
+        /*导航栏滚动样式*/
+        .lea-headWhite{
+        background-color: white;
+        color: #000;
+        box-shadow: rgba(0,0,0,0.06) 0 0 10px 2px;
+        /*color: #ddd;*/
+        }
+        #logo-1 {
+            display:none;
+        }
+    </style>
+
+</head>
+<body>
+    <!--导航栏-->
+    <div class="lea-head" id="myScrollspy">
+        <div class="content">
+            <a class="lea-head-logo" href="http://www.learun.cn" title="快速开发平台,快速开发框架,工作流,Web可视化开发,力软信息">
+                <img class="logo" id="logo-1" src="/static/app/images/logo.png" alt="力软信息,ASP.NET框架,开源平台">
+                <img class="logo" id="logo-2" src="/static/app/images/logowhite.png" alt="力软信息,ASP.NET框架,开源平台">
+
+            </a>
+            <ul id="menu1" class="lea-head-nav">
+                <li data-menuanchor="page1" class="nav-item nav-item-home">
+                    <a href="/app/" title="工作流,Web可视化开发,力软信息" class="active">首页</a>
+                </li>
+                <li class="nav-item nav-item-authorize">
+                    <a href="/Home/Authorize" title="产品中心,敏捷开发,硬件设备,力软信息,快速开发平台,快速开发框架">产品授权</a>
+                </li>
+                <li class="nav-item nav-item-customer">
+                    <a href="/Home/Customer" title="行业客户,矿业石油,教育培训,科研机构,快递物流,建筑房地产,航天航空,机械/制造,电力/电气,高等院校,国企单位,力软信息,软件企业,快速开发平台,快速开发框架">行业客户</a>
+                </li>
+                <li class="nav-item nav-item-case">
+                    <a href="/Home/Case" title="成功案例,行业资讯,常见问题,力软信息,快速开发平台,快速开发框架">成功案例</a>
+                </li>
+                <li class="nav-item nav-item-updateLog">
+                    <a href="/Home/UpdateLog" title="成功案例,行业资讯,常见问题,力软信息,快速开发平台,快速开发框架">升级日志</a>
+                    <img src="/static/app/images/hot.gif" alt="">
+                </li>
+                <li class="nav-item nav-item-about">
+                    <a href="/app/about/" title="专业从事开发框架研发,企业应用系统开发,高新技术企业,力软信息,快速开发平台,快速开发框架">关于力软</a>
+                </li>
+            </ul>
+            <div class="lea-head-btn">
+                <a id="login" class="btn-login" href="http://learun.cn:8090/" target="_blank" title="力软信息,快速开发平台,快速开发框架">登录</a>
+                <a id="signup" class="btn-register" href="/Home/Register" title="力软信息,快速开发平台,快速开发框架">注册</a>
+            </div>
+        </div>
+    </div>
+    <!--banner-->
+    <div class="lea-banner">
+        <div class="content">
+            <img src="/static/app/images/banner1.png" alt="">
+            <div class="line1">这才是程序员的开发平台</div>
+            <div class="line2">快速+易操作一个都不能少</div>
+            <button class="go" onclick="window.open('http://learun.cn:8090/');">立即体验</button>
+            <button class="re" onclick="location.href = '/Home/Register';">获取账号</button>
+        </div>
+    </div>
+
+    <!--幻灯片-->
+    <div class="fullSlide">
+        <div class="bd">
+            <ul>
+             <li style="background-color: #CCE1F3;">
+                <img src="/static/app/images/1.jpg">
+                <div class="siteWidth">
+                    <p class="txt" style="color:#3FA65D"> 全国各地免费预约挂号平台<br /> 解决看病难，我们一直在努力！ <span class="btn">查看详情</span> </p>
+                    <a target="_blank" href="http://www.superslide2.com"></a>
+                </div>
+             </li>
+             <li style="background-color: #BCE0FF;">
+                <img src="/static/app/images/2.jpg">
+                <div class="siteWidth">
+                    <p class="txt" style="color:#3E92D2"> 随时随地挂号、预约医生<br /> 方便就诊 <span class="btn">了解详情</span> </p>
+                    <a target="_blank" href="http://www.superslide2.com"></a>
+                </div>
+             </li>
+             <li style="background-color: #C4CFEB;">
+                <img src="/static/app/images/3.jpg">
+                <div class="siteWidth">
+                    <p class="txt" style="color:#4D5F85"> 挂号网作为卫生部新闻宣传中心/中国健康教育中心<br /> 信息发布平台权威报道人感染H7N9型禽流感疫情 <span class="btn">了解详情</span> </p>
+                    <a target="_blank" href="http://www.superslide2.com"></a>
+                </div>
+             </li>
+             <li style="background-color: #C5EDFD;">
+                <img src="/static/app/images/4.jpg">
+                <div class="siteWidth">
+                    <p class="txt" style="color:#17A5D7"> 面向全国移动手机用户提供服务<br /> 帮助用户准确就医、正确健康保健 <span class="btn">了解详情</span> </p>
+                    <a target="_blank" href="http://www.superslide2.com"></a>
+                </div>
+             </li>
+            </ul>
+        </div>
+        <div class="hd">
+            <ul>
+                <li class="">1</li>
+                <li class="">2</li>
+                <li class="on">3</li>
+                <li class="">4</li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+     jQuery(".fullSlide").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"topLoop",  autoPlay:true, autoPage:true, trigger:"click" });
+    </script>
+
+    <div class="lea-info1">
+        <ul>
+            <li>
+               <div class="img"></div>
+                <p class="line1">在线体验</p>
+                <p class="line2">30天免费体验机会<br>新用户专享</p>
+            </li>
+            <li>
+                <div class="img"></div>
+                <p class="line1">推荐有礼</p>
+                <p class="line2">推荐朋友成功购买后<br>享邀请收益</p>
+            </li>
+            <li>
+                <div class="img"></div>
+                <p class="line1">五星级服务</p>
+                <p class="line2">专业技术人员一对一<br>提供服务支持</p>
+            </li>
+            <li>
+                <div class="img"></div>
+                <p class="line1">购买送礼</p>
+                <p class="line2">买专业版以上框架系统<br>送精美礼品一份</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="lea-info2">
+        <span class="shortLine"></span>
+        <p class="top1">深夜不撸码，产品顶呱呱</p>
+        <p class="top2">企业信息化的最佳选择，外包公司的交付神器</p>
+        <div class="middle">
+            <ul>
+                <li>
+                    <p class="line1">
+                        No.1
+                    </p>
+                    <p class="line2">
+                        技术支持服务口碑第一
+                    </p>
+                </li>
+                <li>
+                    <p class="line1">
+                        <span class="timer count-title count-number" data-to="8" data-speed="1000">8</span>年
+                    </p>
+                    <p class="line2">
+                        8年专注快速开发平台
+                    </p>
+                </li>
+                <li>
+                    <p class="line1">
+                        <span class="timer count-title count-number" data-to="6" data-speed="1000">6</span>万+
+                    </p>
+                    <p class="line2">
+                        用户数超过60000人
+                    </p>
+                </li>
+                <li>
+                    <p class="line1">
+                        +<span class="timer count-title count-number" data-to="50" data-speed="1000">50</span>%
+                    </p>
+                    <p class="line2">
+                        连续五年客户量增长50%
+                    </p>
+                </li>
+                <li>
+                    <p class="line1">
+                        <span class="timer count-title count-number" data-to="90" data-speed="1000">90</span>%+
+                    </p>
+                    <p class="line2">
+                        开发效率提高90%
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="aliyun">
+        <img class="ali-product-logo" src="https://img.alicdn.com/tfs/TB1EGNRRVXXXXazXVXXXXXXXXXX-271-123.png">
+        <h1 class="ali-product-title">全球领先、安全、稳定的云计算产品</h1>
+        <a class="ali-product-sub-title" target="_blank" href="https://www.aliyun.com/about/global">计算、存储、网络、安全、大数据、人工智能，普惠科技助您飞跃发展</a>
+        <ul>
+            <li>
+               <div class="img"></div>
+                <p class="line1">在线体验</p>
+                <p class="line2">30天免费体验机会<br>新用户专享</p>
+            </li>
+            <li>
+                <div class="img"></div>
+                <p class="line1">推荐有礼</p>
+                <p class="line2">推荐朋友成功购买后<br>享邀请收益</p>
+            </li>
+            <li>
+                <div class="img"></div>
+                <p class="line1">五星级服务</p>
+                <p class="line2">专业技术人员一对一<br>提供服务支持</p>
+            </li>
+            <li>
+                <div class="img"></div>
+                <p class="line1">购买送礼</p>
+                <p class="line2">买专业版以上框架系统<br>送精美礼品一份</p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- footer -->
+    <div class="lea-footer">
+    <div class="slogan">
+        <img src="/static/app/images/logo.png" alt="力软信息,ASP.NET框架,开源平台">
+        <span>让开发变得更简单</span>
+    </div>
+    <div class="tail">
+        <div class="lrwell">
+            <div class="well-text">
+                <span class="title">产品</span>
+                <p><a href="http://learun.cn:8090/" target="_blank" title="力软信息,快速开发平台,快速开发框架">敏捷开发平台</a></p>
+            </div>
+            <div class="well-text">
+                <span class="title">行业客户</span>
+                <p><a href="/Home/CaseContent?id=demo7" title="力软信息,快速开发平台,快速开发框架">建筑/房地产</a></p>
+                <p><a href="/Home/CaseContent?id=demo6" title="力软信息,快速开发平台,快速开发框架">教育培训</a></p>
+                <p><a href="/Home/CaseContent?id=demo10" title="力软信息,快速开发平台,快速开发框架">科研机构</a></p>
+                <p><a href="/Home/CaseContent?id=demo8" title="力软信息,快速开发平台,快速开发框架">航天航空</a></p>
+            </div>
+            <div class="well-text more">
+                <p><a href="/Home/CaseContent?id=demo11" title="力软信息,快速开发平台,快速开发框架">快递物流</a></p>
+                <p><a href="/Home/CaseContent?id=demo5" title="力软信息,快速开发平台,快速开发框架">矿产石油</a></p>
+                <p><a href="/Home/CaseContent?id=demo9" title="力软信息,快速开发平台,快速开发框架">电力电气</a></p>
+                <p><a href="/Home/CaseContent?id=demo12" title="力软信息,快速开发平台,快速开发框架">机械制造</a></p>
+            </div>
+            <div class="well-text">
+                <span class="title">关于力软</span>
+                <p><a href="/Home/About?id=0" title="力软信息,快速开发平台,快速开发框架">公司简介</a></p>
+                <p><a href="/Home/About?id=2" title="力软信息,快速开发平台,快速开发框架">加入我们</a></p>
+                <p><a href="/Home/About?id=3" title="力软信息,快速开发平台,快速开发框架">使用条款</a></p>
+                <p><a href="/Home/About?id=4" title="力软信息,快速开发平台,快速开发框架">汇款帐号</a></p>
+            </div>
+            <div class="well-text">
+                <span class="title">联系我们</span>
+                <p>总部：13671911811</p>
+                <p>分部：0512-67227790</p>
+            </div>
+            <div class="code">
+                <div class="wechat" style="float: left; margin-right: 50px;">
+
+                </div>
+                <div class="app" style="float: left;margin-right: 50px;">
+                    <div class="img">
+                        <p>微信公众号</p>
+                        <a>
+                            <img src="/static/app/images/wechat.jpg" alt="力软信息,ASP.NET框架,开源平台">
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="icp">
+            <span>Copyright © 2018 上海力软信息技术有限公司 版权所有 备案号：沪ICP备14034717号</span>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+(function(){
+  pos = 0;
+  ticking = false;
+  var header = document.querySelector("#myScrollspy");
+  window.addEventListener("scroll", function(e){
+    pos = window.scrollY;
+    if(pos > 100&&!ticking){
+      header.classList.add("lea-headWhite");
+      $('#logo-2').hide();
+      $('#logo-1').show();
+      ticking = true;
+    }
+    if(pos < 100 && ticking){
+      header.classList.remove("lea-headWhite");
+      ticking = false;
+      $('#logo-2').show();
+      $('#logo-1').hide();
+    }
+  });
+})();
+</script>
+</html>

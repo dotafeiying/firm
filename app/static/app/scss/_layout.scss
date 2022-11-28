@@ -1,0 +1,236 @@
+@charset "utf-8";
+/*-------------------------------------------------
+SMACSS: LAYOUT - COMMON
+-------------------------------------------------*/
+
+.wrap { 
+  margin:0;
+  padding:0;
+  // overflow:hidden;
+  position:relative;
+}
+.inwrap{ 
+  // position:relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: $grid-width;
+  // margin: 0 60px;
+}
+
+
+/*-------------------------------------------------
+SMACSS: LAYOUT - HEADER
+-------------------------------------------------*/
+.#{$name}-head {
+  background-color: transparent;
+  box-shadow: none;
+  width: 100%;
+  height: 58px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  .content {
+    position: relative;
+    max-width: $grid-width;
+    height: 100%;
+    margin: 0 auto;
+    .#{$name}-head-logo {
+    	top: 0;
+    	display: inline-block;
+	    position: absolute;
+	    left: 0;
+	    padding: 0 30px;
+      #logo-1 {
+        margin-top: 13px;
+      }
+    }
+    .#{$name}-head-nav {
+    	//@include horizontal-list(false);
+	    position: absolute;
+	    top: 0;
+	    left: 230px;
+      height: 100%;
+      .nav-item {
+      	line-height: 56px;
+  	    height: 100%;
+  	    position: relative;
+        float: left;
+  	    width: 110px;
+  	    text-align: center;
+        img {
+          position: absolute;
+          top: 10px;
+          left: 85px;
+        }
+        a {
+    	  // @include hover-link();
+          color: $white;
+          display: block;
+          height: 100%;
+          &.active {
+            color: $lightColor;
+            background-color: transparent;
+            // background-color: #44a6ef;
+            font-weight: bold;
+          }
+        }
+        &:hover {
+          background-color: transparent;
+          a {
+            color: $lightColor;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .#{$name}-head-btn {
+    	position: absolute;
+	    height: 100%;
+	    top: 12px;
+	    right: 25px;
+	  .btn-login {
+	  	@include navBtn($lightColor);
+      background-color: $baseColor;
+      border-color: $baseColor;
+      margin-right: 20px;
+      &:hover {
+        background-color: $lightColor;
+      }
+
+      }
+      .btn-register {
+      	@include navBtn($baseColor);
+      }
+    }
+  }
+  &.#{$name}-headWhite {
+    .content {
+      max-width: $grid-width;
+      .#{$name}-head-btn {
+        .btn-register {
+          border: solid 1px $baseColor;
+          color: $baseColor;
+          &:hover {
+            border-color: $lightColor;
+            color: $lightColor;
+          }
+        }
+      }
+      .#{$name}-head-nav {
+        .nav-item {
+          &:hover {
+            background-color: $nav-bg-hover-color;
+            a {
+              color: $white;
+              font-size: 16px;
+            }
+          }
+          a {
+            color: $nav-font-color;
+            &.active {
+              color: $white;
+              background-color: $nav-bg-hover-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*-------------------------------------------------
+SMACSS: LAYOUT - FOOTER
+-------------------------------------------------*/
+.#{$name}-footer {
+  width: 100%;
+  background-color: $bg-color;
+  .slogan {
+    width: 100%;
+    text-align: center;
+    padding-top: 80px;
+    margin-bottom: 42px;
+    img {
+      display: inline-block;
+      vertical-align: bottom;
+      margin-top: 5px;
+      width: 225px;
+      height: 35px;
+    }
+    span {
+      display: inline-block;
+      vertical-align: bottom;
+      font-size: 24px;
+      line-height: 24px;
+      padding-left: 15px;
+      border-left: 1px solid $foot-slogan-border-color;
+      margin-left: 15px;
+    }
+  }
+  .tail {
+    background-size: cover;
+    width: 100%;
+    font-size: 16px;
+    .lrwell {
+      position: relative;
+      max-width: $grid-width - 120;
+      border-top: 1px solid $foot-tail-border-color;
+      padding-top: 80px;
+      margin: auto;
+      overflow: hidden;
+      .well-text {
+        float: left;
+        margin-right: 80px;
+        cursor: default;
+        .title {
+          display: inline-block;
+          margin-bottom: 40px;
+        }
+        p {
+          margin-top: 10px;
+          margin-bottom: 10px;
+          a {
+            color: $dark;
+            &:hover {
+              color: $baseColor;
+            }
+          }
+        }
+      }
+      .more {
+        margin-top: 62px;
+        margin-left: -40px;
+      }
+      .code {
+        float: right;
+        margin-right: 0;
+        .app {
+          float: left;
+          margin-right: 50px;
+          .img {
+            img {
+              width: 125px;
+              height: 125px;
+              margin-top: 56px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .icp {
+    font-size: 14px;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+}
+
+/*-------------------------------------------------
+SMACSS: LAYOUT - 适配屏幕
+-------------------------------------------------*/
+// media查询
+@media only screen and (max-width: $grid-width) {
+  .rc-head .content .rc-head-nav .nav-item {
+    width: 80px;
+  }
+}

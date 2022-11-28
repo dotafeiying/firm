@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block header %}
+    <!--导航栏-->
+    <div class="wrap">
+        <div class="rc-head rc-headWhite">
+        <div class="content">
+            <a class="rc-head-logo" href="http://www.learun.cn" title="快速开发平台,快速开发框架,工作流,Web可视化开发,力软信息">
+                <img class="logo" id="logo-1" src="/static/app/images/logo.png" alt="力软信息,ASP.NET框架,开源平台">
+            </a>
+            <ul id="menu1" class="rc-head-nav">
+                <li data-menuanchor="page1" class="nav-item nav-item-home">
+                    <a href="/app/" title="工作流,Web可视化开发,力软信息"  {% if 'home' in request.path %} class="active" {% endif %}>首页</a>
+                </li>
+                <li class="nav-item nav-item-authorize">
+                    <a href="/Home/Authorize" title="产品中心,敏捷开发,硬件设备,力软信息,快速开发平台,快速开发框架">产品授权</a>
+                </li>
+                <li class="nav-item nav-item-customer">
+                    <a href="/app/customer" title="行业客户,矿业石油,教育培训,科研机构,快递物流" {% if 'customer' in request.path %} class="active" {% endif %}>行业客户</a>
+                </li>
+                <li class="nav-item nav-item-case">
+                    <a href="/app/case/" title="成功案例,行业资讯,常见问题,力软信息,快速开发平台,快速开发框架" {% if 'case' in request.path %} class="active" {% endif %}>成功案例</a>
+                </li>
+                <li class="nav-item nav-item-updateLog">
+                    <a href="/Home/UpdateLog" title="成功案例,行业资讯,常见问题,力软信息,快速开发平台,快速开发框架">升级日志</a>
+                    <img src="/static/app/images/hot.gif" alt="">
+                </li>
+                <li class="nav-item nav-item-about">
+                    <a href="/app/about/" title="专业从事开发框架研发,企业应用系统开发,高新技术企业,力软信息,快速开发平台,快速开发框架"  {% if 'about' in request.path %} class="active" {% endif %}>关于力软</a>
+                </li>
+            </ul>
+            <div class="rc-head-btn">
+                <a id="login" class="btn-login" href="http://learun.cn:8090/" target="_blank" title="力软信息,快速开发平台,快速开发框架">登录</a>
+                <a id="signup" class="btn-register" href="/Home/Register" title="力软信息,快速开发平台,快速开发框架">注册</a>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

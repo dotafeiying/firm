@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+// 选项卡
+.tab-nav {
+  li {
+    //width: 118px;
+    //height: 38px;
+    //border: 1px solid #eee;
+    float: left;
+    margin-right: -1px;
+    text-align: center;
+    //line-height: 38px;
+    cursor: pointer;
+    //background-color: #f7f8fa;
+  }
+  .active {
+    //border-top: 2px solid #00a2ca;
+    //height: 37px;
+    //background-color: #fff;
+  }
+}
+.tab-content {
+  margin-top: 30px;
+  .tab-item {
+    margin:0 auto;
+  }
+}

@@ -1,0 +1,174 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}成功案例{% endblock %}
+
+{% block extend_style %}
+
+{% endblock %}
+
+{% block extend_js %}
+
+{% endblock %}
+
+{% block content %}
+    <!--banner-->
+    <div class="wrap">
+        <div class="rc-about-banner">
+            <div class="content">
+                <p class="line1">关于力软信息</p>
+                <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+            </div>
+        </div>
+    </div>
+
+    <!--主体部分-->
+
+
+    <div class="wrap bg-gray clearfix" style="overflow: hidden">
+        <div class="inwrap">
+            <div class="rc-customer-info1">
+                <div class="main">
+                        <ul class="tab-nav clearfix">
+                            <li class="active tab-all">全部</li>
+                            {% for type in type_list %}
+                                <li>{{ type.name }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="tab-content clearfix">
+                            <div class="tab-item">
+                                {% for customer in customer_list %}
+                                    <div class="customer-list"><a class="all-link" href="{{ customer.get_absolute_url }}"></a>
+                                    <div class="customer-list-box clearfix">
+                                        <div class="list-left">
+                                            <div class="cell-box">
+                                                <a href="" target="_blank" ><img src="{{ MEDIA_URL }}{{ customer.img }}" class="pic"></a>
+                                            </div>
+                                        </div>
+                                        <div class="list-right">
+                                            <div class="name clearfix">
+                                                <em>客户名称：</em><span><a href="" target="_blank">{{ customer.title }}</a></span>
+                                            </div>
+                                            <div class="ctg clearfix">
+                                                <em>行业类型：</em><span>{{ customer.type }}</span>
+                                            </div>
+                                            <div class="intro clearfix">
+{#                                                <em>客户简介：</em><span>{{ customer.content|striptags| truncatewords_html:5 }}</span>#}
+                                                <em>客户简介：</em><span>{{ customer.content|striptags|truncatechars:80 }}</span>
+                                            </div>
+                                            <div class="desc clearfix">
+                                                <em>服务历程：</em><span>完美世界使用企业标准服务，在游戏上线、活动、大促、公测等期间，阿里云技术服务专家...</span>
+                                            </div>
+                                            <div class="prd clearfix">
+                                                <em>使用产品：</em>
+                                                <div class="prd-content clearfix">
+                                                    <div class="prd-list">
+                                                        <a href="" target="_blank">
+                                                                    <span class="icon-vpc"></span>
+                                                                    <span class="prd-text">VPC</span>
+                                                                </a>
+                                                    </div>
+                                                    <div class="prd-list">
+                                                        <a href="" target="_blank">
+                                                                    <span class="icon-nat"></span>
+                                                                    <span class="prd-text">NAT网关</span>
+                                                                </a>
+                                                    </div>
+                                                    <div class="prd-list">
+                                                        <a href="" target="_blank">
+                                                                    <span class="icon-ecs"></span>
+                                                                    <span class="prd-text">ECS</span>
+                                                                </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="service clearfix">
+                                                <em>使用服务：</em>
+                                                <span><a href="" target="_blank">企业标准级支持计划</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                            {% for type in type_list %}
+                                <div class="tab-item" style="display: none">
+                                    {% for customer in type.customer_set.all %}
+                                        {% if customer.is_publish %}
+                                        <div class="customer-list"><a class="all-link" href="{{ customer.get_absolute_url }}"></a>
+                                            <div class="customer-list-box clearfix">
+                                                <div class="list-left">
+                                                    <div class="cell-box">
+                                                        <a href="" target="_blank" ><img src="{{ MEDIA_URL }}{{ customer.img }}" class="pic"></a>
+                                                    </div>
+                                                </div>
+                                                <div class="list-right">
+                                                    <div class="name clearfix">
+                                                        <em>客户名称：</em><span><a href="" target="_blank">{{ customer.title }}</a></span>
+                                                    </div>
+                                                    <div class="ctg clearfix">
+                                                        <em>行业类型：</em><span>{{ customer.type }}</span>
+                                                    </div>
+                                                    <div class="intro clearfix">
+                                                        <em>客户简介：</em><span>{{ customer.content|striptags|truncatechars:80 }}</span>
+                                                    </div>
+                                                    <div class="desc clearfix">
+                                                        <em>服务历程：</em><span>完美世界使用企业标准服务，在游戏上线、活动、大促、公测等期间，阿里云技术服务专家...</span>
+                                                    </div>
+                                                    <div class="prd clearfix">
+                                                        <em>使用产品：</em>
+                                                        <div class="prd-content clearfix">
+                                                            <div class="prd-list">
+                                                                <a href="" target="_blank">
+                                                                            <span class="icon-vpc"></span>
+                                                                            <span class="prd-text">VPC</span>
+                                                                        </a>
+                                                            </div>
+                                                            <div class="prd-list">
+                                                                <a href="" target="_blank">
+                                                                            <span class="icon-nat"></span>
+                                                                            <span class="prd-text">NAT网关</span>
+                                                                        </a>
+                                                            </div>
+                                                            <div class="prd-list">
+                                                                <a href="" target="_blank">
+                                                                            <span class="icon-ecs"></span>
+                                                                            <span class="prd-text">ECS</span>
+                                                                        </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="service clearfix">
+                                                        <em>使用服务：</em>
+                                                        <span><a href="" target="_blank">企业标准级支持计划</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            var $div_li = $(".tab-nav li");
+            $div_li.click(function(){
+                $(this).addClass("active").siblings().removeClass("active");
+                var index =  $div_li.index(this);
+                $(".tab-content .tab-item").eq(index).show().siblings().hide();
+            })
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,82 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}成功案例-详情页{% endblock %}
+
+{% block extend_style %}
+
+{% endblock %}
+
+{% block extend_js %}
+
+{% endblock %}
+
+{% block content %}
+    <!--banner-->
+    <div class="wrap">
+        <div class="rc-about-banner">
+            <div class="content">
+                <p class="line1">关于力软信息</p>
+                <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+            </div>
+        </div>
+    </div>
+
+    <!--主体部分-->
+
+    <div class="wrap clearfix bg-gray" style="overflow: hidden">
+        <div class="inwrap">
+            <div class="rc-detail-info1">
+                <div class="breadcrumb clearfix">
+                    <ul>
+                        <li><a href="{% url 'app:home' %}"><i class="fa fa-home"></i>首页</a>&nbsp;&gt;&nbsp;</li>
+                        <li><a href="{% url 'app:case' %}">成功案例</a>&nbsp;&gt;&nbsp;</li>
+                        <li><a href="javascript:void(0)">{{ case.type.name }}</a>&nbsp;&gt;&nbsp;</li><span>{{ case.title }}</span>
+                    </ul>
+                </div>
+                <article class="article clearfix">
+                  <header>
+                    <h1 class="text-center">{{ case.title }}</h1>
+                    <dl class="dl-inline">
+                      <dt>来源：</dt>
+                      <dd>来自成功案例</dd>
+                      <dt>最后修订：</dt>
+                      <dd>{{ case.update_time| date:"Y-m-d H:m:s" }}</dd>
+                      <dt></dt>
+                      <dd class="pull-right"><span>软诚客户部整理</span></dd>
+                    </dl>
+                    {% if case.abstract %}
+                        <section class="abstract">
+                          <p><strong>摘要：</strong>{{ case.abstract }}</p>
+                        </section>
+                    {% endif %}
+                  </header>
+                  <section class="content">
+                    {{ case.content | safe }}
+{#                    {{ case.content | safe | truncatechars_html:54 }}#}
+                  </section>
+                  <footer>
+{#                    <p class="pull-right text-muted">本文在知识共享 署名-相同方式共享 3.0协议之条款下提供。</p>#}
+{#                    <p class="text-important">本文节选自 Wikipedia HTML5 词条。</p>#}
+                    <ul class="pager pager-justify">
+                        {% if case.prev_case %}
+                            <li class="previous"><a href="{{ case.prev_case.get_absolute_url }}"><i class="fa fa-long-arrow-left"></i> 上一篇：{{ case.prev_case.title }}</a></li>
+                        {% endif %}
+                        {% if case.next_case %}
+                            <li class="next disabled"><a href="{{ case.next_case.get_absolute_url }}">下一篇：{{ case.next_case.title }} <i class="fa fa-long-arrow-right"></i></a></li>
+                        {% endif %}
+                    </ul>
+                  </footer>
+                </article>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+

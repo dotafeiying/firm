@@ -1,0 +1,590 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}成功案例{% endblock %}
+
+{% block extend_style %}
+
+{% endblock %}
+
+{% block extend_js %}
+
+{% endblock %}
+
+{% block content %}
+    <!--banner-->
+    <div class="wrap">
+        <div class="rc-about-banner">
+            <div class="content">
+                <p class="line1">关于力软信息</p>
+                <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+            </div>
+        </div>
+    </div>
+
+    <!--主体部分-->
+
+
+
+    <div class="wrap bg-dark">
+        <div class="inwrap">
+            <div class="rc-case-info1">
+                <div class="content">
+                    <ul>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底.有情怀的公司，将关爱客户进行到底</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底.有情怀的公司，将关爱客户进行到底</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底.</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="rc-shapes">
+                                <canvas class="canvas1" width="49" height="49"></canvas>
+                                <canvas class="canvas2" width="60" height="60"></canvas>
+                                <p class="line1">关于力软信息</p>
+                                <p class="line2">有情怀的公司，将关爱客户进行到底</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="wrap clearfix">
+        <div class="inwrap">
+            <div class="rc-case-info2">
+                <div class="main">
+                    <div class="title">
+                        <p class="line"></p>
+                        <p class="tit">解决方案</p>
+                    </div>
+                    <p class="tt">热门解决方案</p>
+                    <div class="case-hot clearfix">
+                        <ul class="card">
+                            {% for hot_case in hot_case_list %}
+                            <li>
+                                <a class="link" href="{% url 'app:case_detail' hot_case.slug %}">
+                                    <div class="img">
+                                        <img src="{{ MEDIA_URL }}{{ hot_case.img }}">
+                                    </div>
+                                    <div class="box">
+                                        <p class="title">{{ hot_case.title }}</p>
+                                        <p>
+                                            <span class="more-link">查看更多</span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+{#                            <li>#}
+{#                                <a class="link" href="{% url 'app:case_detail' case_list.0.slug %}">#}
+{#                                    <div class="img">#}
+{#                                        <img src="/static/app/images/62257_3zhan.jpg">#}
+{#                                    </div>#}
+{#                                    <div class="box">#}
+{#                                        <p class="title">web网站开发</p>#}
+{#                                        <p>#}
+{#                                            <span class="more-link">查看更多</span>#}
+{#                                        </p>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="link" href="/product/type/3033-7503-1.html">#}
+{#                                    <div class="img">#}
+{#                                        <img src="/static/app/images/62534_3zhan.jpg">#}
+{#                                    </div>#}
+{#                                    <div class="box">#}
+{#                                        <p class="title">自动化工具开发</p>#}
+{#                                        <p>#}
+{#                                            <span class="more-link">查看更多</span>#}
+{#                                        </p>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="link" href="/product/type/3033-7504-1.html">#}
+{#                                    <div class="img">#}
+{#                                        <img src="/static/app/images/62535_3zhan.jpg">#}
+{#                                    </div>#}
+{#                                    <div class="box">#}
+{#                                        <p class="title">微信公众号开发</p>#}
+{#                                        <p>#}
+{#                                            <span class="more-link">查看更多</span>#}
+{#                                        </p>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="link" href="/product/type/3033-7672-1.html">#}
+{#                                    <div class="img">#}
+{#                                        <img src="/static/app/images/71499_3zhan.jpg">#}
+{#                                    </div>#}
+{#                                    <div class="box">#}
+{#                                        <p class="title">大数据分析</p>#}
+{#                                        <p>#}
+{#                                            <span class="more-link">查看更多</span>#}
+{#                                        </p>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </li>#}
+                        </ul>
+                    </div>
+                    <p class="tt">解决方案</p>
+                    <div class="case clearfix">
+                        <ul class="tab-nav clearfix">
+                            {% for type in type_list %}
+                                <li {% if forloop.first %} class="active" {% endif %}>{{ type }}</li>
+                            {% endfor %}
+{#                            <li class="active">公司网站开发</li>#}
+{#                            <li>微信公众号开发</li>#}
+{#                            <li>购物网站</li>#}
+{#                            <li>在线教育网站</li>#}
+                        </ul>
+                        <div class="tab-content clearfix">
+                            {% for type in type_list %}
+                            <div class="tab-item panel" {% if forloop.first %} {% else %} style="display: none;" {% endif %}>
+                                <ul>
+                                    {% for case in type.case_set.all %}
+                                        {% if case.is_publish %}
+                                        <li>
+                                            <a href="{{ case.get_absolute_url }}" target="_blank">
+                                                <div class="pic">
+                                                    <img src="https://img.alicdn.com/tps/TB1bXzdKVXXXXXQXXXXXXXXXXXX-92-92.png" alt="">
+                                                </div>
+                                                <div class="pic pic2">
+                                                    <img src="https://img.alicdn.com/tps/TB1C2O9KVXXXXaMXpXXXXXXXXXX-92-92.png" alt="">
+                                                </div>
+                                                <div class="right">
+                                                    <p class="name">{{ case.title }}</p>
+                                                    <p class="info">安全稳定、全网互通</p>
+                                                    <p class="info">大数据分析，共建物联网生态</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    
+                                </ul>
+                            </div>
+                            {% endfor %}
+{#                            <div class="tab-item panel">#}
+{#                                <ul>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/iot" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1bXzdKVXXXXXQXXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1C2O9KVXXXXaMXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">物联网</p>#}
+{#                                                <p class="info">安全稳定、全网互通</p>#}
+{#                                                <p class="info">大数据分析，共建物联网生态</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/finance" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1IqS3KVXXXXaFXFXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1UweOKVXXXXa.aXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">新金融</p>#}
+{#                                                <p class="info">高弹性、高可用、安全</p>#}
+{#                                                <p class="info">合规，助推金融业务创新</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/energy" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1E_W6KVXXXXcBXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1m8iWKVXXXXcFXFXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">新能源</p>#}
+{#                                                <p class="info">专业化云端业务与技术</p>#}
+{#                                                <p class="info">快速搭建标准或定制化平台</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/healthcare" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1_FO1KVXXXXckXFXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1PQC4KVXXXXatXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">大健康</p>#}
+{#                                                <p class="info">集合传统医疗优势</p>#}
+{#                                                <p class="info">致力构建智能医疗云生态</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/govcloud" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1boC3KVXXXXXCXFXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB12TmGKVXXXXaKapXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">大政务</p>#}
+{#                                                <p class="info">构筑开放共享、敏捷高效</p>#}
+{#                                                <p class="info">安全可信的政务云基础架构</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/game" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1PQTXKVXXXXc8XXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1TXC7KVXXXXcKXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">大游戏</p>#}
+{#                                                <p class="info">成熟的商业化云服务</p>#}
+{#                                                <p class="info">助力中小型游戏企业快速成长</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/industry" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1CGk6KVXXXXbFXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1kBZ4KVXXXXaxXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">大制造</p>#}
+{#                                                <p class="info">提供快速搭建一站式亿级设备接入、管理能力</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/communication" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1QoiKKVXXXXbmaXXXXXXXXXXX-112-112.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB15b1WKVXXXXXjXVXXXXXXXXXX-112-112.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">大传媒</p>#}
+{#                                                <p class="info">基于高性能基础架构，提供面向媒体行业的快速新</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/genomics" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1zVndKVXXXXasXXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1_wYbKVXXXXbdXXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">生物基因</p>#}
+{#                                                <p class="info">快速搭建海量基因数据上传</p>#}
+{#                                                <p class="info">存储到分析挖掘的一体化</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/hcloud" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1CGk6KVXXXXbFXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1kBZ4KVXXXXaxXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">混合云</p>#}
+{#                                                <p class="info">带给企业先进的大数据、云服务、安全可靠的互联网新技术</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/o2o" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1lrzcKVXXXXbdXXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1kAOHKVXXXXcNapXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">O2O</p>#}
+{#                                                <p class="info">结合各类O2O场景，提供并发</p>#}
+{#                                                <p class="info">支撑与海量数据采集分析</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/rendering" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB12nKUKVXXXXX3XVXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB12taOKVXXXXceaXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">渲染</p>#}
+{#                                                <p class="info">整合视觉行业生态的力量</p>#}
+{#                                                <p class="info">提供多层次渲染服务</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                            <div class="tab-item panel" style="display: none;">#}
+{#                                <ul>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/dedicatedcloud" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1JpSQKVXXXXaJaXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1qTTdKVXXXXX6XXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">专有云</p>#}
+{#                                                <p class="info">全栈云架构</p>#}
+{#                                                <p class="info">数据化+自动化运维和运营</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/hcloud" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1CGk6KVXXXXbFXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1kBZ4KVXXXXaxXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">混合云</p>#}
+{#                                                <p class="info">带给企业先进的大数据、云服务、安全可靠的互联网新技术</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://market.aliyun.com/oraclemigration" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1bXzdKVXXXXXQXXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1C2O9KVXXXXaMXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">Oracle迁移上云</p>#}
+{#                                                <p class="info">帮助在传统IT领域大量使用Oracle应用的企业平滑迁移上云</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://market.aliyun.com/datamigration" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB12nKUKVXXXXX3XVXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB12taOKVXXXXceaXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">数据迁移上云</p>#}
+{#                                                <p class="info">帮助企业在上云过程中安全、可靠、方便的完成数据迁移</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                            <div class="tab-item panel" style="display: none;">#}
+{#                                <ul>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/security" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1SSyWKVXXXXajXVXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1xHOYKVXXXXXLXVXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">安全</p>#}
+{#                                                <p class="info">多层防护+云端大数据</p>#}
+{#                                                <p class="info">提供整套安全产品和服务</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/storage" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1aai2KVXXXXbFXFXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1089VKVXXXXX4XVXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">云存储</p>#}
+{#                                                <p class="info">解决海量数据存档/备份、加工</p>#}
+{#                                                <p class="info">加速分发、挖掘分析、监控等</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/recovery" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1NNi.KVXXXXXRXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1PtK7KVXXXXcfXpXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">容灾</p>#}
+{#                                                <p class="info">确保数据不丢失，保证恢复</p>#}
+{#                                                <p class="info">时间远小于数据中心或物理设备</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <a href="https://www.aliyun.com/solution/middleware" target="_blank">#}
+{#                                            <div class="pic">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1HA5WKVXXXXaQXVXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="pic pic2">#}
+{#                                                <img src="https://img.alicdn.com/tps/TB1GGTaKVXXXXcJXXXXXXXXXXXX-92-92.png" alt="">#}
+{#                                            </div>#}
+{#                                            <div class="right">#}
+{#                                                <p class="name">企业级互联网架构</p>#}
+{#                                                <p class="info">快速构建大型分布式应用</p>#}
+{#                                                <p class="info">快速创新，助力企业转型</p>#}
+{#                                            </div>#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                            <div class="tab-item" style="display: none;">#}
+{#                                <ul class="card" >#}
+{#                            <li>#}
+{#                                <a class="link" href="">#}
+{#                                    <div class="img">#}
+{#                                        <img src="/static/app/images/62257_3zhan.jpg">#}
+{#                                    </div>#}
+{#                                    <div class="box">#}
+{#                                        <p class="title">互联网产品孵化平台</p>#}
+{#                                        <p>#}
+{#                                            <span class="more-link">查看更多</span>#}
+{#                                        </p>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="link" href="/product/type/3033-7503-1.html">#}
+{#                                    <div class="img">#}
+{#                                        <img src="/static/app/images/62534_3zhan.jpg">#}
+{#                                    </div>#}
+{#                                    <div class="box">#}
+{#                                        <p class="title">流程引擎产品</p>#}
+{#                                        <p>#}
+{#                                            <span class="more-link">查看更多</span>#}
+{#                                        </p>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="link" href="/product/type/3033-7504-1.html">#}
+{#                                    <div class="img">#}
+{#                                        <img src="/static/app/images/62535_3zhan.jpg">#}
+{#                                    </div>#}
+{#                                    <div class="box">#}
+{#                                        <p class="title">企业人力资源管理平台</p>#}
+{#                                        <p>#}
+{#                                            <span class="more-link">查看更多</span>#}
+{#                                        </p>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="link" href="/product/type/3033-7672-1.html">#}
+{#                                    <div class="img">#}
+{#                                        <img src="/static/app/images/71499_3zhan.jpg">#}
+{#                                    </div>#}
+{#                                    <div class="box">#}
+{#                                        <p class="title">站群系统</p>#}
+{#                                        <p>#}
+{#                                            <span class="more-link">查看更多</span>#}
+{#                                        </p>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            var $div_li = $(".tab-nav li");
+            $div_li.click(function(){
+                $(this).addClass("active").siblings().removeClass("active");
+                var index =  $div_li.index(this);
+                $(".tab-content .tab-item").eq(index).show().siblings().hide();
+            })
+        });
+    </script>
+{% endblock %}
+

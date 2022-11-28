@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin pct($pct) {
+  width: #{$pct};
+  position: relative;
+  margin: 0 auto;
+}
+
+@mixin triangle($width, $height, $color, $direction) {
+  $width: $width/2;
+  $color-border-style: $height solid $color;
+  $transparent-border-style: $width solid transparent;
+  height: 0;
+  width: 0;
+  @if $direction==up {
+    border-bottom: $color-border-style;
+    border-left: $transparent-border-style;
+    border-right: $transparent-border-style;
+  }
+  @else if $direction==right {
+    border-left: $color-border-style;
+    border-top: $transparent-border-style;
+    border-bottom: $transparent-border-style;
+  }
+  @else if $direction==down {
+    border-top: $color-border-style;
+    border-left: $transparent-border-style;
+    border-right: $transparent-border-style;
+  }
+  @else if $direction==left {
+    border-right: $color-border-style;
+    border-top: $transparent-border-style;
+    border-bottom: $transparent-border-style;
+  }
+}
+
+/* 自定义 */
+@mixin navBtn($color) {
+  border: solid 1px #fff;
+  // background-color: $color;
+  color: $white;
+  display: inline-block;
+  // margin-right: 20px;
+  padding: 0 20px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+  &:hover {
+    border-color: $color;
+    color: $white;
+  }
+}
+
+@mixin title {
+  text-align: center;
+  font-size: 24px;
+  color: $title-color;
+  line-height: 36px;
+}
+
+@mixin subtitle($color:#373d41) {
+  text-align: center;
+  font-size: 16px;
+  margin: 8px 0 8px;
+  display: block;
+  color: $color;
+}

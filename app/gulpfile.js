@@ -1,109 +1,103 @@
-//引入gulp和gulp插件
-var gulp = require('gulp'),
-    runSequence = require('run-sequence'),
-    rev = require('gulp-rev'),
-    revCollector = require('gulp-rev-collector'),
-    sass = require('gulp-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
-    // jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin'),
-    // rename = require('gulp-rename'),
-    clean = require('gulp-clean'),
-    del  = require('del'),
-    //错误处理提示插件
-    plumber = require('gulp-plumber'),
-    compass = require('gulp-compass'),
-    concat = require('gulp-concat');
+'use strict';
 
-//定义css、js源文件路径
+const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+var del = require('del');
+// 用来自动给 css 文件样式添加浏览器前缀
+const autoprefixer = require('gulp-autoprefixer');
+const rev = require('gulp-rev');
+const uglify = require('gulp-uglify');
+const plumber = require('gulp-plumber');
+const revCollector = require('gulp-rev-collector');
+
+
+
+// const { watch, series } = require('gulp');
+
 var cssSrc = 'src/css/*.css',
     sassSrc = 'static/app/scss/**/*.scss',
     jsSrc = 'static/app/js/*.js',
     htmlSrc = 'templates/**/*.html';
-// var dir = '../app/static/app/';    //对目标根目录进行变量
-var dir = 'dist';    //对目标根目录进行变量
+var dir = 'dist';
 
-//清空目标文件
-gulp.task('cleanDst', function () {
-    return gulp.src([dir,'rev'], {read: false})
-        .pipe(clean());
-    // return gulp.src('rev', {read: false})
-    //     .pipe(clean());
-});
+var paths = {
+    styles: {
+        src: 'static/app/scss/**/*.scss',
+        dest: 'static/app/css'
+    },
+    scripts: {
+        src: 'static/app/js/*.js',
+        dest: 'dist/js'
+    },
+    htmls: {
+        src: 'templates/**/*.html',
+        dest: 'templates'
+    }
+};
 
-//sass转换为css
-gulp.task('sass', function(){
-    // del([dir+'/css/*.css'],{force: true});
-    return gulp.src(sassSrc)
-        // .pipe(plumber())
+function clean() {
+    // You can use multiple globbing patterns as you would with `gulp.src`,
+    // for example if you are using del 2.0 or above, return its promise
+    return del([ 'dist', 'rev' ]);
+}
+
+function styles() {
+    return gulp.src(paths.styles.src)
+        // .pipe(sass().on('error', sass.logError))
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer())
-        .pipe(gulp.dest('static/app/css'))
+        .pipe(gulp.dest(paths.styles.dest))
         .pipe(rev())
-        .pipe(gulp.dest(dir+'/css'))
+        .pipe(gulp.dest('dist/css'))
         .pipe(rev.manifest())
         .pipe(gulp.dest('rev/css'));
-});
+}
 
-//CSS生成文件hash编码并生成 rev-manifest.json文件名对照映射
-// gulp.task('revCss', function(){
-//     return gulp.src(cssSrc)
-//         .pipe(rev())
-//         .pipe(gulp.dest('dist/css'))
-//         .pipe(rev.manifest())
-//         .pipe(gulp.dest('rev/css'));
-// });
-
-
-//js生成文件hash编码并生成 rev-manifest.json文件名对照映射
-gulp.task('revJs', function(){
-    return gulp.src(jsSrc)
+function scripts() {
+    return gulp.src(paths.scripts.src)
         .pipe(rev())
         .pipe(plumber())
         //压缩
         .pipe(uglify())
-        .pipe(gulp.dest(dir+'/js'))
+        .pipe(gulp.dest('dist/js'))
         .pipe(rev.manifest())
         .pipe(gulp.dest('rev/js'));
-});
+}
 
-
-//Html替换css、js文件版本
-gulp.task('revHtml', function () {
-    return gulp.src(['rev/**/*.json', htmlSrc])
+function htmls() {
+    return gulp.src(['rev/**/*.json', paths.htmls.src])
         .pipe(plumber())
         .pipe(revCollector({
             replaceReved: true
         }))
         // .pipe(gulp.dest(dir+'/templates'));
         .pipe(gulp.dest('templates'));
-});
+}
 
-gulp.task('watch',function(){
-    // gulp.watch(cssSrc, ['revCss']);     //监视html文件，如果发生变化就进行复制
-    gulp.watch(sassSrc, ['sass']);       //监视css文件，如果发生变化就进行复制
-    gulp.watch(jsSrc, ['revJs']);       //监视css文件，如果发生变化就进行复制
-    // gulp.watch('img/*.{jpg,png}',['copyImg']);      //监视图片，如果发生变化就进行复制
-    // gulp.watch('js/*.js', ['copyJs']);      //监视js文件，如果发生变化就进行复制
-    gulp.watch('{rev/**/*.json,templates/**/*.html}', ['revHtml'])     //监视json文件和html文件，如果发生变化就进行hash命名，和引用更改
-});
+function watch() {
+    gulp.watch(paths.scripts.src, scripts);
+    gulp.watch(paths.styles.src, styles);
+    gulp.watch(['rev/**/*.json', paths.htmls.src], htmls)
+}
 
+/*
+ * Specify if tasks run in series or parallel using `gulp.series` and `gulp.parallel`
+ */
+// var build = gulp.series(clean, styles);
+var build = gulp.series(clean, gulp.parallel(styles, scripts), htmls);
 
-//开发构建
-gulp.task('dev', function (done) {
-    condition = false;
-    runSequence(
-        ['cleanDst'],
-        ['sass'],
-        // ['revCss'],
-        ['revJs'],
-        ['revHtml'],
-        ['watch'],
-        done);
-});
+exports.clean = clean;
+exports.styles = styles;
+exports.scripts = scripts;
+exports.htmls = htmls;
+exports.watch = watch;
+exports.build = build;
 
+exports.default = build;
 
-gulp.task('default', ['dev']);
-
+// exports.buildStyles = styles;
+// exports.watch = function () {
+//     gulp.watch('static/app/scss/**/*.scss', series(clean, styles));
+// };
+// exports.default = series(clean, styles);
+// exports.default = gulp.series(clean, gulp.parallel(styles, scripts));

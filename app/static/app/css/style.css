@@ -1519,29 +1519,6 @@ SMACSS: CUSTOMER - 适配屏幕
   color: #5cb7f4;
   font-size: 36px;
 }
-.rc-about-info1 .tab-content .tags .content {
-  position: relative;
-}
-.rc-about-info1 .tab-content .tags .content p {
-  line-height: 2;
-  letter-spacing: 0.3rem;
-  text-align: left;
-  color: #666;
-}
-.rc-about-info1 .tab-content .tags .content ul li {
-  display: inline-block;
-  width: 100%;
-}
-.rc-about-info1 .tab-content .tags .content ul * {
-  display: inline-block;
-}
-.rc-about-info1 .tab-content .tags .content img {
-  text-align: right;
-  display: inline-block;
-  margin-right: 20px;
-  width: 70%;
-}
-
 .rc-detail-info1 {
   max-width: 1000px;
   margin: 60px auto;

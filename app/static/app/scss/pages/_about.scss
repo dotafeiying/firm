@@ -50,29 +50,29 @@
           font-size: 36px;
         }
       }
-      .content {
-        position: relative;
-        p {
-          line-height: 2;
-          letter-spacing: 0.3rem;
-          text-align: left;
-          color: $info-line2-color;
-        }
-        ul {
-          li {
-            display: inline-block;
-            width: 100%;
-          }
-          * {
-            display: inline-block;
-          }
-        }
-        img {
-          text-align: right;
-          display: inline-block;
-          margin-right: 20px;
-          width: 70%;
-        }
+      .rc-content {
+        //position: relative;
+        //p {
+        //  line-height: 2;
+        //  letter-spacing: 0.3rem;
+        //  text-align: left;
+        //  color: $info-line2-color;
+        //}
+        //ul {
+        //  li {
+        //    display: inline-block;
+        //    width: 100%;
+        //  }
+        //  * {
+        //    display: inline-block;
+        //  }
+        //}
+        //img {
+        //  text-align: right;
+        //  display: inline-block;
+        //  margin-right: 20px;
+        //  width: 70%;
+        //}
       }
     }
   }

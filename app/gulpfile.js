@@ -77,7 +77,8 @@ function htmls() {
 function watch() {
     gulp.watch(paths.scripts.src, scripts);
     gulp.watch(paths.styles.src, styles);
-    gulp.watch(['rev/**/*.json', paths.htmls.src], htmls)
+    // gulp.watch(['rev/**/*.json', paths.htmls.src], htmls)
+    gulp.watch('rev/**/*.json', htmls)
 }
 
 /*

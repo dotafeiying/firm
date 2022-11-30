@@ -1,6 +1,6 @@
 {% extends 'app/base.html' %}
 {% load static %}
-{% block title %}关于{% endblock %}
+{% block title %}关于我们{% endblock %}
 
 {%  block extend_style %}
     <style>
@@ -31,7 +31,7 @@
     <!--banner-->
     <div class="rc-about-banner">
         <div class="content">
-            <p class="line1">关于力软信息</p>
+            <p class="line1">关于路希捷网络科技</p>
             <p class="line2">有情怀的公司，将关爱客户进行到底</p>
         </div>
         <div class="banner-row" data-parallel="" style="transform: rotateX(12.8deg) rotateY(1.22101deg);">
@@ -89,7 +89,7 @@
                         <h2>{{ about.title }}</h2>
                         <h3>{{ about.subtitle }}</h3>
                     </div>
-                    <div class="content">
+                    <div class="rc-content">
                         {{ about.content | safe }}
                     </div>
                 </div>

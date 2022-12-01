@@ -44,6 +44,15 @@ INSTALLED_APPS = [
     'import_export',
     # 'fontawesome',
 
+    # login
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'allauth.socialaccount.providers.weixin',
+
 ]
 
 MIDDLEWARE = [
@@ -121,6 +130,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -147,3 +164,25 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 # JET_SIDE_MENU_COMPACT = True
+
+
+SITE_ID = 1
+# 登录成功后重定向地址
+LOGIN_REDIRECT_URL = '/app/home/'
+# 可选值为：mandatory optional none, mandatory本地注册的用户必须先验证邮箱才可以登录，optional和none都不要求验证邮箱，区别是optional仍然会发送验证邮件
+# ACCOUNT_EMAIL_VERIFICATION = mandatory
+# 既可以使用用户名也可以使用email， 其他可选的值是'username'、'email'
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+# 设置用户注册的时候必须填写邮箱地址
+ACCOUNT_EMAIL_REQUIRED = True
+# 登出直接退出，不用确认
+ACCOUNT_LOGOUT_ON_GET = True
+
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '843514174@qq.com'
+EMAIL_HOST_PASSWORD = '200731500143'
+EMAIL_USE_TLS = True
+# EMAIL_FROM = '@qq.com'
+# 默认的发件人
+DEFAULT_FROM_EMAIL = '843514174@qq.com'

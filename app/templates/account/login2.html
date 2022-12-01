@@ -1,0 +1,90 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block extra_head %}
+{% load static %}
+<script type="text/javascript" src="{% static "app/js/jquery-1.11.1.min.js?v=8101d596b2" %}"></script>
+<script type="text/javascript" src="{% static "app/lib/bootstrap/js/bootstrap.min.js" %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static "app/lib/bootstrap/css/bootstrap.min.css" %}">
+
+<link rel="stylesheet" href={% static 'app/lib/layui/css/layui.css' %}>
+<script src={% static "app/lib/layui/layui.js" %}></script>
+<link rel="stylesheet" href={% static "app/css/sccl.css" %}>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+
+{% block content %}
+
+<h1>{% trans "Sign In" %}</h1>
+
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+<p>{% blocktrans with site.name as site_name %}Please sign in with one
+of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+
+  <div class="login-or">{% trans 'or' %}</div>
+
+</div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+<p>{% blocktrans %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+{% endif %}
+
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+{#  {{ form.as_p }}#}
+{#  {% for field in form %}#}
+{#      {{ field.label_tag }}:{{ field }}#}
+{#     {{ field.errors }}#}
+{#  {% endfor %}#}
+
+<p>
+    {{ form.login.label }}
+    {{ form.login }}
+</p>
+<p>
+    {{ form.password.label }}
+    {{ form.password }}
+</p>
+<p>
+    {{ form.remember.label }}
+    {{ form.remember }}
+</p>
+
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+</form>
+    {% for value in form.errors.values %}
+        {{ value }}
+    {% endfor %}
+
+{#    {% if form.errors %}#}
+{#        {% for field in form.errors %}#}
+{#            {{ field }}#}
+{#            {% for error in field.errors %}#}
+{#                <strong>{{ error|escape }}</strong>#}
+{#            {% endfor %}#}
+{#        {% endfor %}#}
+{#    {% endif %}#}
+{#    {{ form.login }}#}
+
+{% endblock %}

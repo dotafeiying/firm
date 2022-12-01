@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>login</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "app/lib/layui/css/layui.css" %}">
+    <style>
+        body{
+            background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1576686661155&di=979f715560fa7ad316c42b4b15e8d702&imgtype=0&src=http%3A%2F%2F00.minipic.eastday.com%2F20171011%2F20171011134244_ba2764b9a42cd878ce93ab37fd08e3e5_2.jpeg");
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .loginForm{
+            width: 350px;
+            height: 300px;
+            background-color: white;
+            padding: 30px 20px;
+            margin-top: 50%;
+            border-radius: 5px;
+            box-shadow: 0 0 5px black;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md4 layui-col-md-offset4">
+                <div class="loginForm">
+                    <h2 align="center">管理后台</h2>
+                    <form class="layui-form" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        <div class="layui-form-item">
+                            {{ form.login.label_tag }}
+                            <div class="layui-form-block">
+                                <input type="text" name="{{ form.login.name }}" required lay-verify="required"
+                                placeholder="用户名或e-mail" class="layui-input" id="id_login">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+{#                            <label>密码:</label>#}
+                            {{ form.password.label_tag }}
+                            <div class="layui-form-block">
+                                <input type="password" name="{{ form.password.name }}" required lay-verify="required"
+                                placeholder="请输入密码" class="layui-input" id="id_password">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            {{ form.remember.label_tag }}
+                            <div class="layui-form-block">
+                                <input type="checkbox" name="{{ form.remember.name }}" class="layui-input" id="id_remember">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-form-block">
+                                <button class="layui-btn" lay-submit lay-filter="loginForm" type="submit">登录</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{#    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>#}
+    <script type="text/javascript" src="{% static "app/js/jquery-1.11.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "app/lib/layui/layui.all.js" %}"></script>
+    <script>
+        {#layui.use(['layer', 'form'], function () {#}
+        {#    var layer = layui.layer;#}
+        {#    var form = layui.form;#}
+        {##}
+        {#    form.on('submit(loginForm)', function (data) {#}
+        {#        // submit login data#}
+        {#        {% comment %}$.post("/account/login", {username: data.field.username, password: data.field.password}, res=>{#}
+        {#            switch (res.code) {#}
+        {#                case 200:#}
+        {#                    layer.alert(res.msg, {icon:1});#}
+        {#                    break;#}
+        {#                case 501:#}
+        {#                    layer.alert(res.msg, {icon:2});#}
+        {#                    break;#}
+        {#            }#}
+        {#        }){% endcomment %}#}
+        {##}
+        {#        layer.msg(JSON.stringify(data.field));#}
+        {#        return false;#}
+        {#    })#}
+        {#})#}
+    </script>
+</body>
+</html>

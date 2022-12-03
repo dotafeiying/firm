@@ -1,0 +1,7 @@
+id,title,module,app_label,user,column,order,settings,children,collapsed
+8,Quick links,jet.dashboard.modules.LinkList,,1,0,0,"{""layout"": ""inline"", ""deletable"": false, ""collapsible"": false, ""draggable"": false}","[{""url"": ""/"", ""title"": ""Return to site""}, {""url"": ""/admin/password_change/"", ""title"": ""\u4fee\u6539\u5bc6\u7801""}, {""url"": ""/admin/logout/"", ""title"": ""\u6ce8\u9500""}]",0
+9,Applications,jet.dashboard.modules.AppList,,1,1,0,"{""exclude"": [""auth.*""], ""models"": null}","",0
+10,管理,jet.dashboard.modules.AppList,,1,2,0,"{""exclude"": null, ""models"": [""auth.*""]}","",0
+11,Recent Actions,jet.dashboard.modules.RecentActions,,1,0,1,"{""exclude_list"": null, ""user"": null, ""limit"": 10, ""include_list"": null}","",0
+12,Latest Django News,jet.dashboard.modules.Feed,,1,1,1,"{""feed_url"": ""http://www.djangoproject.com/rss/weblog/"", ""limit"": 5}","",0
+13,Support,jet.dashboard.modules.LinkList,,1,2,1,"{""layout"": ""stacked"", ""deletable"": true, ""collapsible"": true, ""draggable"": true}","[{""url"": ""http://docs.djangoproject.com/"", ""title"": ""Django documentation"", ""external"": true}, {""url"": ""http://groups.google.com/group/django-users"", ""title"": ""Django \""django-users\"" mailing list"", ""external"": true}, {""url"": ""irc://irc.freenode.net/django"", ""title"": ""Django irc channel"", ""external"": true}]",0

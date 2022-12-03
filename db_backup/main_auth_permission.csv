@@ -1,0 +1,100 @@
+id,content_type_id,codename,name
+1,1,add_logentry,Can add log entry
+2,1,change_logentry,Can change log entry
+3,1,delete_logentry,Can delete log entry
+4,2,add_user,Can add user
+5,2,change_user,Can change user
+6,2,delete_user,Can delete user
+7,3,add_group,Can add group
+8,3,change_group,Can change group
+9,3,delete_group,Can delete group
+10,4,add_permission,Can add permission
+11,4,change_permission,Can change permission
+12,4,delete_permission,Can delete permission
+13,5,add_contenttype,Can add content type
+14,5,change_contenttype,Can change content type
+15,5,delete_contenttype,Can delete content type
+16,6,add_session,Can add session
+17,6,change_session,Can change session
+18,6,delete_session,Can delete session
+19,7,add_casetype,Can add 案例类别
+20,7,change_casetype,Can change 案例类别
+21,7,delete_casetype,Can delete 案例类别
+22,8,add_case,Can add 成功案例
+23,8,change_case,Can change 成功案例
+24,8,delete_case,Can delete 成功案例
+25,9,add_customertype,Can add 客户类别
+26,9,change_customertype,Can change 客户类别
+27,9,delete_customertype,Can delete 客户类别
+28,10,add_customer,Can add 行业客户
+29,10,change_customer,Can change 行业客户
+30,10,delete_customer,Can delete 行业客户
+31,11,add_about,Can add 关于公司
+32,11,change_about,Can change 关于公司
+33,11,delete_about,Can delete 关于公司
+34,12,add_setting,Can add 系统配置
+35,12,change_setting,Can change 系统配置
+36,12,delete_setting,Can delete 系统配置
+37,13,add_settinggroup,Can add 配置分组
+38,13,change_settinggroup,Can change 配置分组
+39,13,delete_settinggroup,Can delete 配置分组
+40,12,add_settings,Can add 系统配置
+41,12,change_settings,Can change 系统配置
+42,12,delete_settings,Can delete 系统配置
+43,13,add_settingsgroup,Can add 配置分组
+44,13,change_settingsgroup,Can change 配置分组
+45,13,delete_settingsgroup,Can delete 配置分组
+46,14,add_bookmark,Can add bookmark
+47,14,change_bookmark,Can change bookmark
+48,14,delete_bookmark,Can delete bookmark
+49,15,add_pinnedapplication,Can add pinned application
+50,15,change_pinnedapplication,Can change pinned application
+51,15,delete_pinnedapplication,Can delete pinned application
+52,16,add_userdashboardmodule,Can add user dashboard module
+53,16,change_userdashboardmodule,Can change user dashboard module
+54,16,delete_userdashboardmodule,Can delete user dashboard module
+55,17,add_banner,Can add 轮播商品
+56,17,change_banner,Can change 轮播商品
+57,17,delete_banner,Can delete 轮播商品
+58,18,add_notification,Can add notification
+59,18,change_notification,Can change notification
+60,18,delete_notification,Can delete notification
+61,19,add_site,Can add site
+62,19,change_site,Can change site
+63,19,delete_site,Can delete site
+64,20,add_emailaddress,Can add email address
+65,20,change_emailaddress,Can change email address
+66,20,delete_emailaddress,Can delete email address
+67,21,add_emailconfirmation,Can add email confirmation
+68,21,change_emailconfirmation,Can change email confirmation
+69,21,delete_emailconfirmation,Can delete email confirmation
+70,22,add_socialaccount,Can add social account
+71,22,change_socialaccount,Can change social account
+72,22,delete_socialaccount,Can delete social account
+73,23,add_socialapp,Can add social application
+74,23,change_socialapp,Can change social application
+75,23,delete_socialapp,Can delete social application
+76,24,add_socialtoken,Can add social application token
+77,24,change_socialtoken,Can change social application token
+78,24,delete_socialtoken,Can delete social application token
+79,1,view_logentry,Can view log entry
+80,4,view_permission,Can view permission
+81,3,view_group,Can view group
+82,2,view_user,Can view user
+83,5,view_contenttype,Can view content type
+84,6,view_session,Can view session
+85,8,view_case,Can view 案例
+86,7,view_casetype,Can view 案例类别
+87,10,view_customer,Can view 客户
+88,9,view_customertype,Can view 客户类别
+89,11,view_about,Can view 关于公司
+90,12,view_settings,Can view 系统配置
+91,13,view_settingsgroup,Can view 配置分组
+92,17,view_banner,Can view 轮播商品
+93,18,view_notification,Can view 系统公告
+94,19,view_site,Can view site
+95,20,view_emailaddress,Can view email address
+96,21,view_emailconfirmation,Can view email confirmation
+97,22,view_socialaccount,Can view social account
+98,23,view_socialapp,Can view social application
+99,24,view_socialtoken,Can view social application token

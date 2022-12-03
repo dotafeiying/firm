@@ -1,0 +1,67 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block head_title %}{% trans "Sign up" %}{% endblock %}
+
+{% block content %}
+{#<h1>{% trans "Sign Up" %}</h1>#}
+{##}
+{#<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>#}
+
+<div class="row align-items-center">
+  <div class="col-lg-7 col-md-6">
+    <div class="mr-lg-5">
+      <img src="/static/app/images/login.svg" class="img-fluid d-block mx-auto" alt="">
+    </div>
+  </div>
+  <div class="col-lg-5 col-md-6">
+    <div class="card shadow rounded border-0">
+      <div class="card-body">
+        <h4 class="card-title text-center">{% trans "Sign Up" %}</h4>
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+          {% csrf_token %}
+
+          {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+          {% endfor %}
+
+          {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+              {% for error in form.non_field_errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% for field in form.visible_fields %}
+            <div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field|add_class:'form-control' }}
+              {% for error in field.errors %}
+                <small class="form-text text-muted" style="font-size: 80%">{{ error }}</small>
+              {% endfor %}
+            </div>
+          {% endfor %}
+
+
+          {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+          {% endif %}
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">{% trans "Sign Up" %}</button>
+          </div>
+          <div class="mx-auto">
+              <p class="mb-0 mt-3"><small class="text-dark mr-2">已有账号 ?</small> <a href="{{ login_url }}" class="text-dark" style="font-size: 14px;">直接登录</a></p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

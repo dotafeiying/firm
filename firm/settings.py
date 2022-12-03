@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'allauth.socialaccount.providers.weixin',
+    'allauth.socialaccount.providers.github',
+
+    'widget_tweaks',
 
 ]
 
@@ -165,10 +168,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 # JET_SIDE_MENU_COMPACT = True
 
+SOCIALACCOUNT_PROVIDERS = {
+    'weixin': {
+        'AUTHORIZE_URL': 'https://open.weixin.qq.com/connect/oauth2/authorize',  # for media platform
+        'SCOPE': ['snsapi_base'],
+    }
+}
 
-SITE_ID = 1
+SITE_ID = 2
 # 登录成功后重定向地址
 LOGIN_REDIRECT_URL = '/app/home/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/app/home/'
 # 可选值为：mandatory optional none, mandatory本地注册的用户必须先验证邮箱才可以登录，optional和none都不要求验证邮箱，区别是optional仍然会发送验证邮件
 # ACCOUNT_EMAIL_VERIFICATION = mandatory
 # 既可以使用用户名也可以使用email， 其他可选的值是'username'、'email'
@@ -181,8 +191,8 @@ ACCOUNT_LOGOUT_ON_GET = True
 EMAIL_HOST = 'smtp.qq.com'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = '843514174@qq.com'
-EMAIL_HOST_PASSWORD = '200731500143'
+EMAIL_HOST_PASSWORD = 'rwdffqoiuqekbeef'
 EMAIL_USE_TLS = True
-# EMAIL_FROM = '@qq.com'
+# EMAIL_FROM = '843514174@qq.com'
 # 默认的发件人
 DEFAULT_FROM_EMAIL = '843514174@qq.com'

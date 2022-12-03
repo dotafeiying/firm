@@ -1,0 +1,46 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+{% load widget_tweaks %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+{#<h1>{% trans "Sign Up" %}</h1>#}
+{##}
+{#<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>#}
+
+<div class="row align-items-center">
+  <div class="col-lg-7 col-md-6">
+    <div class="mr-lg-5">
+      <img src="/static/app/images/login.svg" class="img-fluid d-block mx-auto" alt="">
+    </div>
+  </div>
+  <div class="col-lg-5 col-md-6">
+    <div class="card shadow rounded border-0">
+      <div class="card-body">
+        <h4 class="card-title text-center">{% trans "Sign In" %}</h4>
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_login' %}">
+          {% csrf_token %}
+
+          {% include 'account/snippets/bs4_form.html' with form=form %}
+
+          {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+          {% endif %}
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">{% trans "Sign In" %}</button>
+          </div>
+          <div class="mx-auto">
+            <p class="mb-0 mt-3"><small class="text-dark mr-2">没有账号 ?</small> <a href="{{ signup_url }}" class="text-dark" style="font-size: 14px;">立即注册</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

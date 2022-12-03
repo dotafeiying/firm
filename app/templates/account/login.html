@@ -1,98 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>login</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "app/lib/layui/css/layui.css" %}">
-    <style>
-        body{
-            background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1576686661155&di=979f715560fa7ad316c42b4b15e8d702&imgtype=0&src=http%3A%2F%2F00.minipic.eastday.com%2F20171011%2F20171011134244_ba2764b9a42cd878ce93ab37fd08e3e5_2.jpeg");
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-        .loginForm{
-            width: 350px;
-            height: 300px;
-            background-color: white;
-            padding: 30px 20px;
-            margin-top: 50%;
-            border-radius: 5px;
-            box-shadow: 0 0 5px black;
-            box-sizing: border-box;
-        }
-    </style>
-</head>
-<body>
-    <div class="layui-container">
-        <div class="layui-row">
-            <div class="layui-col-md4 layui-col-md-offset4">
-                <div class="loginForm">
-                    <h2 align="center">管理后台</h2>
-                    <form class="layui-form" method="POST" action="{% url 'account_login' %}">
-                        {% csrf_token %}
-                        <div class="layui-form-item">
-                            {{ form.login.label_tag }}
-                            <div class="layui-form-block">
-                                <input type="text" name="{{ form.login.name }}" required lay-verify="required"
-                                placeholder="用户名或e-mail" class="layui-input" id="id_login">
-                            </div>
-                        </div>
+{% extends "account/base.html" %}
 
-                        <div class="layui-form-item">
-{#                            <label>密码:</label>#}
-                            {{ form.password.label_tag }}
-                            <div class="layui-form-block">
-                                <input type="password" name="{{ form.password.name }}" required lay-verify="required"
-                                placeholder="请输入密码" class="layui-input" id="id_password">
-                            </div>
-                        </div>
+{% load i18n %}
+{% load account socialaccount %}
+{% load widget_tweaks %}
 
-                        <div class="layui-form-item">
-                            {{ form.remember.label_tag }}
-                            <div class="layui-form-block">
-                                <input type="checkbox" name="{{ form.remember.name }}" class="layui-input" id="id_remember">
-                            </div>
-                        </div>
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
 
-                        <div class="layui-form-item">
-                            <div class="layui-form-block">
-                                <button class="layui-btn" lay-submit lay-filter="loginForm" type="submit">登录</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+{% block content %}
+{#<h1>{% trans "Sign Up" %}</h1>#}
+{##}
+{#<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>#}
+
+<div class="row align-items-center">
+  <div class="col-lg-7 col-md-6">
+    <div class="mr-lg-5">
+      <img src="/static/app/images/login.svg" class="img-fluid d-block mx-auto" alt="">
     </div>
-{#    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>#}
-    <script type="text/javascript" src="{% static "app/js/jquery-1.11.1.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "app/lib/layui/layui.all.js" %}"></script>
-    <script>
-        {#layui.use(['layer', 'form'], function () {#}
-        {#    var layer = layui.layer;#}
-        {#    var form = layui.form;#}
-        {##}
-        {#    form.on('submit(loginForm)', function (data) {#}
-        {#        // submit login data#}
-        {#        {% comment %}$.post("/account/login", {username: data.field.username, password: data.field.password}, res=>{#}
-        {#            switch (res.code) {#}
-        {#                case 200:#}
-        {#                    layer.alert(res.msg, {icon:1});#}
-        {#                    break;#}
-        {#                case 501:#}
-        {#                    layer.alert(res.msg, {icon:2});#}
-        {#                    break;#}
-        {#            }#}
-        {#        }){% endcomment %}#}
-        {##}
-        {#        layer.msg(JSON.stringify(data.field));#}
-        {#        return false;#}
-        {#    })#}
-        {#})#}
-    </script>
-</body>
-</html>
+  </div>
+  <div class="col-lg-5 col-md-6">
+    <div class="card shadow rounded border-0">
+      <div class="card-body">
+        <h4 class="card-title text-center">{% trans "Sign In" %}</h4>
+        <p class="text-danger text-center small" role="alert">&nbsp;
+          {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </p>
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_login' %}">
+          {% csrf_token %}
+
+          {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field }}
+          {% endfor %}
+
+          <div class="form-group">
+            <label for="{{ form.login.id_for_label }}">{{ form.login.label }}</label>
+            {{ form.login|add_class:'form-control' }}
+            {% for error in form.login.errors %}
+              <span class="help-block">{{ error }}</span>
+            {% endfor %}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+            {{ form.password|add_class:'form-control' }}
+            {% for error in form.password.errors %}
+              <span class="help-block">{{ error }}</span>
+            {% endfor %}
+          </div>
+          <div class="form-group form-check">
+            {% render_field form.remember class="form-check-input" %}
+            <label for="{{ form.remember.id_for_label }}">{{ form.remember.label }}</label>
+            <a class="text-muted float-right" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+          </div>
+
+          {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+          {% endif %}
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">{% trans "Sign In" %}</button>
+          </div>
+{#          <div class="mx-auto">#}
+{#            <p class="mb-0 mt-3"><small class="text-dark mr-2">没有账号 ?</small> <a href="{{ signup_url }}" class="text-dark">立即注册</a></p>#}
+{#          </div>#}
+          <p class="card-text text-center"><small class="text-muted">其他方式登录</small></p>
+          <div class="col-12 text-center">
+            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+          </div>
+          <div class="form-text text-muted small">未注册手机验证后自动登录，注册即代表同意<a href="https://www.zhihu.com/term/zhihu-terms">《知乎协议》</a><a href="https://www.zhihu.com/term/privacy">《隐私保护指引》</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

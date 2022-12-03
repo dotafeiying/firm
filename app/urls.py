@@ -17,8 +17,6 @@ from django.conf.urls import url
 from django.contrib import admin
 from . import views
 from django.views.generic import TemplateView
-from django.contrib.auth.views import login
-from django.contrib.auth.views import logout
 from django.contrib.auth.decorators import login_required
 
 app_name = 'app'

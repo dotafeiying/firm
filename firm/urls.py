@@ -24,6 +24,7 @@ urlpatterns = [
     # url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     url(r'^admin/', admin.site.urls),
     url(r'^app/', include('app.urls')),
+    url(r'^order/', include('order.urls')),
     url(r'^ueditor/', include('DjangoUeditor.urls')),
     path('accounts/', include('allauth.urls')),
 ]

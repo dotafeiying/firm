@@ -55,3 +55,6 @@ ACCOUNT_LOGOUT_ON_GET (=True)
 - 完成注册登录界面美化
 
 - 完成github第三方登录，微信登录待完善
+
+- update layui版本到2.7.6
+- 增加order app （完成ing）

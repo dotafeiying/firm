@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'app.apps.AppConfig',
     'app',
+    'order',
     'DjangoUeditor',
     'import_export',
     # 'fontawesome',

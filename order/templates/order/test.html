@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static "app/lib/bootstrap-4.6.1/css/bootstrap.min.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "app/lib/layui/css/layui.css" %}">
+  <script type="text/javascript" src="{% static "app/js/jquery-3.6.1.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "app/lib/bootstrap-4.6.1/js/bootstrap.min.js" %}"></script>
+  <script type="text/javascript" src="{% static 'app/lib/layui/layui.js' %}"></script>
+</head>
+<body>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open
+  modal for @mdo
+</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open
+  modal for @fat
+</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+        data-whatever="@getbootstrap">Open modal for @getbootstrap
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form class="layui-form" id="signup_form" method="post" action="/order/pay" lay-filter="test1">
+  {% csrf_token %}
+{#  <label for="id_email">联系方式</label>#}
+{#  <input type="email" name="email" placeholder="E-mail地址" autocomplete="email" class="form-control layui-form-danger"#}
+{#         required="" id="id_email">#}
+  {{ form.as_p }}
+</form>
+<button type="button" id='testSubmitBtn' class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">确认支付</button>
+</body>
+<script>
+
+
+    layui.use(['layer', 'form'], function () {
+        var form = layui.form;
+
+        {% comment %}$('#testSubmitBtn').on('click', function (data) {
+            form.submit('test1', function (data) { // 注：v2.7.0 新增
+                // 回调函数返回结果跟上述 submit 事件完全一致
+                var field = data.field;
+                // do something
+                console.log(field);
+            });
+            return false;
+        });{% endcomment %}
+
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+            console.log(22)
+            var modal = $(this)
+
+            form.submit('test1', function (data) {
+                var field = data.field;
+                field.goods_id = 1
+                field.total_price = 12
+                console.log(field);
+                reqData = field
+                $.post('/order/commit', reqData, function (data) {
+                    console.log(data.res);
+
+                    modal.find('.modal-title').text('New message to ' + data.errmsg)
+                    {% comment %}modal.find('.modal-body input').val(recipient)
+                    if (data.res == 0) {
+                        alert(11)
+                    } else {
+                        alert(data.errmsg)
+                    }{% endcomment %}
+                })
+            })
+        })
+
+
+        {#form.on('submit(pay_test)', function (data) {#}
+        {#    console.log(data);#}
+        {#    console.log(data.field)#}
+        {#    reqData = {}#}
+        {#    $.post('/order/commit', reqData, function (data) {#}
+        {#        console.log(data.res);#}
+        {#        if (data.res == 0) {#}
+        {#          alert(11)#}
+        {#        }#}
+        {#    })#}
+        {##}
+        {##}
+        {#})#}
+        }
+    )
+</script>
+</html>

@@ -1,0 +1,76 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}订单投诉{% endblock %}
+
+{% load i18n %}
+{% load account socialaccount %}
+{% load widget_tweaks %}
+
+{% load crispy_forms_tags %}
+
+{% block extend_style %}
+  <link rel="stylesheet" type="text/css" href="{% static "app/lib/bootstrap-4.6.1/css/bootstrap.min.css" %}">
+{% endblock %}
+
+{% block extend_js %}
+  <script type="text/javascript" src="{% static "app/js/jquery-3.6.1.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "app/lib/bootstrap-4.6.1/js/bootstrap.min.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+  <div class="container" style="margin: 78px auto">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+    <div class="row justify-content-center p-5">
+      <div class="col-lg-12 text-center">
+        <div class="page-next-level">
+          <div class="alert alert-light shadow d-inline-block rounded-pill" role="alert">
+            <span class="badge badge-pill badge-danger mr-1">投诉订单</span>
+            <span class="content"> 轻松投诉订单，保障您的消费权益</span>
+          </div>
+        </div>
+      </div><!--end col-->
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="section-title mb-4 pb-2">
+          <div class="rounded shadow-sm">
+            <div class="p-4 border-bottom text-center">
+              <h4 class="title mb-0"> 投 诉 订 单 </h4>
+            </div>
+            <div class="p-4">
+              <form method="post" action="{% url 'post_detail' %}" novalidate>
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-6">
+                    {{ form.order_no|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ form.reason|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ form.email|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ form.alipay_no|as_crispy_field }}
+                  </div>
+                </div>
+                {{ form.content|as_crispy_field }}
+                <button type="submit" class="btn btn-success">提交投诉</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

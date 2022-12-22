@@ -1547,12 +1547,37 @@ SMACSS: DETAIL - 适配屏幕
   color: #767ead;
 }
 
-.paydemo-type-body .paydemo-type {
+.pay-type-body .pay-type {
   border: solid 1px #e2e2e2;
   margin-right: 10px;
   cursor: pointer;
 }
-.paydemo-type-body .this {
+.pay-type-body .this {
   color: #1953ff;
   border-color: #1953ff;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  z-index: 45;
+}
+
+.actions .action {
+  background: linear-gradient(45deg, #fd0b0b, #ff4a4a);
+  /*box-shadow: 0 7px 10px 0 rgb(255 113 19 / 23%);*/
+  padding: 10px 20px;
+  border-radius: 10px 0 0 10px;
+  margin-top: 15px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.actions .kf {
+  background: linear-gradient(45deg, #9737f7, #3369ff);
 }

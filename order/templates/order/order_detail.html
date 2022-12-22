@@ -1,0 +1,182 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}研狗插件{% endblock %}
+
+{% load i18n %}
+{% load account socialaccount %}
+{% load widget_tweaks %}
+
+{% block extend_style %}
+  <link rel="stylesheet" type="text/css" href="{% static "app/lib/bootstrap-4.6.1/css/bootstrap.min.css" %}">
+{% endblock %}
+
+{% block extend_js %}
+  <script type="text/javascript" src="{% static "app/js/jquery-3.6.1.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "app/lib/bootstrap-4.6.1/js/bootstrap.min.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+
+  <div class="container" style="margin: 78px auto">
+    <div class="row justify-content-center p-5">
+      <div class="col-lg-12 text-center">
+        <div class="page-next-level">
+          <div class="alert alert-light shadow d-inline-block rounded-pill" role="alert">
+            <span class="badge badge-pill badge-danger mr-1">订单查询</span>
+            <span class="content"> 轻松查询订单，即刻享受卡密自动交易</span>
+          </div>
+        </div>
+      </div><!--end col-->
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <form action="{% url 'order_detail' %}">
+          {% csrf_token %}
+          <div class="input-group mb-3">
+            <input type="text" id="orderno_input" class="form-control" name="order_no" placeholder="请输入订单号" aria-label="请输入订单号"
+                   aria-describedby="button-addon2" value="{{ order.order_no }}">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center mb-4 pb-2">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            {% if order.status == '2' or order.status == '4' %}
+              <h5 class="float-right">使用{{ order.get_pay_method_display }}付款<span class="text-danger"
+                                                                                  style="font-size: 2rem">{{ order.total_price }}</span>元
+              </h5>
+              <h4 class="card-title" order_no="{{ order.order_no }}">订单号：<span id="order_pay">{{ order.order_no }}</span></h4>
+              <p>付款时间：{{ order.update_time }}</p>
+              <p>商品名称：{{ goods.name }}</p>
+              <p>已发卡密：<span class="text-danger">{{ order.get_payed_count }}张</span></p>
+              <p>商家微信：<span class="text-primary">dotafeiying</span></p>
+              <p>你购买的卡密（解压密码）： {{ goods.password }} </p>
+            {% elif order.status == '1' %}
+              <h5 class="float-right"><span class="text-danger"
+                                            style="font-size: 2rem">{{ order.get_status_display }} {{ order.total_price }} 元</span></h5>
+              <h4 class="card-title">订单号：<span id="order_pay">{{ order.order_no }}</span></h4>
+              <p>付款时间：<span class="text-danger">{{ order.get_status_display }}</span></p>
+              <p>商品名称：{{ goods.name }}</p>
+              <p>已发卡密：<span class="text-danger">{{ order.get_payed_count }}张</span></p>
+              <p>商家微信：<span class="text-primary">dotafeiying</span></p>
+              <p>你购买的卡密（解压密码）： 订单未付款，请<a href="javascript:void(0)" id="re_pay">重新支付</a>或联系客服处理！ </p>
+            {% elif order.status == '5' %}
+              <h5 class="float-right"><span class="text-danger"
+                                            style="font-size: 2rem">{{ order.get_status_display }} {{ order.total_price }} 元</span></h5>
+              <h4 class="card-title">订单号：<span id="order_pay">{{ order.order_no }}</span></h4>
+              <p>付款时间：<span class="text-danger">{{ order.get_status_display }}</span></p>
+              <p>商品名称：{{ goods.name }}</p>
+              <p>已发卡密：<span class="text-danger">{{ order.get_payed_count }}张</span></p>
+              <p>商家微信：<span class="text-primary">dotafeiying</span></p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+      layui.use(['layer', 'form'], function () {
+          var layer = layui.layer;
+          var flag = true;
+          var loading = '';
+          var is_check_pay = false;
+
+          function oderquery(t) {
+              if (flag == false) return false;
+              var order_no = $('#orderno_input').val();
+              $.post('/pay/getOrderStatus', {
+                  orderid: orderid,
+                  token: '776addd6fca2c36a165ecbba6d8a7b481671032508'
+              }, function (ret) {
+                  if (ret == 1) {
+                      layer.close(loading);
+                      flag = false;
+                      stop = true;
+                      $('#paystatus').html('付款成功');
+                      getgoods(order_no, '0');
+                  }
+              });
+              t = t + 1;
+              setTimeout('oderquery(' + t + ')', 3000);
+          }
+
+
+          $('#re_pay').click(function () {
+              is_check_pay = false
+              var order_no = $('#order_pay').text()
+              var csrf = $('input[name="csrfmiddlewaretoken"]').val()
+              var params = {'order_no': order_no, 'csrfmiddlewaretoken': csrf}
+
+              layer.open({
+                  title: false,
+                  content: "确定支付订单" + order_no + "？支付金额为 <span class = 'text-danger'>{{ order.total_price }}</span> 元",
+                  btn: ['确定', '取消'],
+                  yes: function (index, layero) {
+                      layer.close(index);
+                      is_check_pay = true
+
+                      $.post('{% url "order_pay" %}', params, function (data) {
+                          if (data.res == 0) {
+                              console.log(data.pay_url);
+                              window.open(data.pay_url);
+                              var getting = {
+                                  type: 'post',
+                                  url: '{% url "order_check" %}',
+                                  timeout: 30000,
+                                  data: params,
+                                  success: function (d) {
+                                      if (d.res == 0) {
+                                          {#layer.alert('支付成功')#}
+                                          layer.open({
+                                              content: "<p>支付成功! <br>您的订单号为：" + order_no + "，点击确定获取卡密</p>",
+                                              yes: function (idx, layero) {
+                                                  layer.close(idx); //如果设定了yes回调，需进行手工关闭
+                                                  window.open('{% url "order_detail" %}' + '?order_no=' + order_no)
+                                              }
+                                          });
+                                          {#location.reload()#}
+                                      } else if (d.res == 3) {
+                                          {#alert(d.errmsg)#}
+                                          {#$.ajax(getting);#}
+                                          setTimeout(getData, 3000)
+                                      } else {
+                                          layer.alert(d.errmsg)
+                                      }
+                                  },
+                                  error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                      setTimeout(getData, 1000)
+                                  }
+                              }
+
+                              function getData() {
+                                  if (is_check_pay) {
+                                      $.ajax(getting);
+                                  }
+                              }
+
+                              getData()
+
+                          } else {
+                              layer.alert(data.errmsg)
+                          }
+                      })
+                  },
+                  btn2: function (index, layero) {
+                      //return false 开启该代码可禁止点击该按钮关闭
+                  }
+              })
+
+          })
+      })
+  </script>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>跳转提示</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static "app/lib/bootstrap-4.6.1/css/bootstrap.min.css" %}">
+  <script type="text/javascript" src="{% static "app/js/jquery-3.6.1.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "app/lib/bootstrap-4.6.1/js/bootstrap.min.js" %}"></script>
+</head>
+<body>
+<div class="account-pages">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="text-center mb-5">
+          <div class="content-icon error">
+            <i class="bx bx-message-square-dots display-4 text-danger"></i>
+          </div>
+          <h3 class="text-danger font-weight-bold mt-5">订单不存在</h3>
+          <p class="mt-4">页面自动 <a id="href" href="javascript:history.back(-1);">跳转</a> 等待时间： <b id="wait">3</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    (function () {
+        var wait = document.getElementById('wait'),
+            href = document.getElementById('href').href;
+        var interval = setInterval(function () {
+            var time = --wait.innerHTML;
+            if (time <= 0) {
+                location.replace(href);
+                clearInterval(interval);
+            }
+        }, 1000);
+    })();
+</script>
+</body>
+</html>

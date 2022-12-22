@@ -58,6 +58,29 @@
   {{ form.as_p }}
 </form>
 <button type="button" id='testSubmitBtn' class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">确认支付</button>
+
+<div class="container">
+  <div class="test p-4" style="">
+  <form id="payForm" name="pay">
+    <input type="hidden" name="trade_no" value="">
+    <div class="order_pay d-flex flex-row align-items-center">
+        <img src="/static/app/images/order_pay.png">
+        <p class="">
+            支付金额：
+            <span>12.16元（风控随机增加：0.16元）  </span><br>
+            支付方式：
+            <span>支付宝扫码</span>
+        </p>
+        <div style="clear: both">
+        </div>
+    </div>
+    <p>订单编号： UM20221209014207674</p>
+    <p>商品名称： 研狗插件下载与教程_解压密码</p>
+    <p>购买数量： 1</p>
+    <button type="button" class="btn btn-primary">确定</button>
+  </form>
+</div>
+</div>
 </body>
 <script>
 
@@ -65,60 +88,7 @@
     layui.use(['layer', 'form'], function () {
         var form = layui.form;
 
-        {% comment %}$('#testSubmitBtn').on('click', function (data) {
-            form.submit('test1', function (data) { // 注：v2.7.0 新增
-                // 回调函数返回结果跟上述 submit 事件完全一致
-                var field = data.field;
-                // do something
-                console.log(field);
-            });
-            return false;
-        });{% endcomment %}
 
-        $('#exampleModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) // Button that triggered the modal
-            var recipient = button.data('whatever') // Extract info from data-* attributes
-            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-
-            console.log(22)
-            var modal = $(this)
-
-            form.submit('test1', function (data) {
-                var field = data.field;
-                field.goods_id = 1
-                field.total_price = 12
-                console.log(field);
-                reqData = field
-                $.post('/order/commit', reqData, function (data) {
-                    console.log(data.res);
-
-                    modal.find('.modal-title').text('New message to ' + data.errmsg)
-                    {% comment %}modal.find('.modal-body input').val(recipient)
-                    if (data.res == 0) {
-                        alert(11)
-                    } else {
-                        alert(data.errmsg)
-                    }{% endcomment %}
-                })
-            })
-        })
-
-
-        {#form.on('submit(pay_test)', function (data) {#}
-        {#    console.log(data);#}
-        {#    console.log(data.field)#}
-        {#    reqData = {}#}
-        {#    $.post('/order/commit', reqData, function (data) {#}
-        {#        console.log(data.res);#}
-        {#        if (data.res == 0) {#}
-        {#          alert(11)#}
-        {#        }#}
-        {#    })#}
-        {##}
-        {##}
-        {#})#}
-        }
-    )
+    })
 </script>
 </html>

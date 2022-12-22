@@ -16,41 +16,16 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="container" style="margin: 78px auto">
-{#  <div class="row align-items-center">#}
-{#    <div class="col-lg-7 col-md-6">#}
-{#      <div class="mr-lg-5">#}
-{#        <img src="/static/app/images/login.svg" class="img-fluid d-block mx-auto" alt="">#}
-{#      </div>#}
-{#    </div>#}
-{#    <div class="col-lg-5 col-md-6">#}
-{#      <div class="card shadow rounded border-0">#}
-{#        <div class="card-body">#}
-{#          <h4 class="card-title text-center">{% trans "Sign Up" %}</h4>#}
-{#          <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">#}
-{#            {% csrf_token %}#}
-{##}
-{#            {% include 'account/snippets/bs4_form.html' with form=form %}#}
-{##}
-{##}
-{#            {% if redirect_field_value %}#}
-{#              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>#}
-{#            {% endif %}#}
-{##}
-{#            <div class="form-group">#}
-{#              <button type="submit" class="btn btn-primary btn-block">{% trans "Sign Up" %}</button>#}
-{#            </div>#}
-{#            <div class="mx-auto">#}
-{#                <p class="mb-0 mt-3"><small class="text-dark mr-2">已有账号 ?</small> <a href="{{ login_url }}" class="text-dark" style="font-size: 14px;">直接登录</a></p>#}
-{#            </div>#}
-{#          </form>#}
-{#        </div>#}
-{##}
-{#      </div>#}
-{#    </div>#}
-{#  </div>#}
-  <form class="layui-form" id="signup_form" method="post" action="/order/pay" lay-filter="test1">
+  <div class="actions">
+    <a onclick="window.open('{% url "post_detail" %}')">
+      <div class="action">投诉商家
+      </div>
+    </a> <a onclick="window.open('{% url "order_detail" %}')">
+    <div class="action kf">订单查询</div>
+  </a>
+  </div>
+<div class="container" style="margin: 128px auto">
+  <form class="layui-form" id="signup_form" method="post" action="{% url 'order_pay' %}">
     <div class="row mb-4">
       <div class="col-sm-5 left-card">
         <div class="card rounded-0">
@@ -60,18 +35,21 @@
               <span class="badge badge-light font-weight-normal">数字卡密</span>
               <span class="badge badge-light font-weight-normal">自动发货</span>
               <span class="badge badge-light font-weight-normal">信誉卖家</span>
+              <span class="label label-default">默认标签</span>
             </p>
-    {#        <h5 class="card-title">Special title treatment</h5>#}
-            <p class="text-muted"><b class="mr-3">联系卖家</b>微信:syintb</p>
-            <p class="text-muted"><b class="mr-3">卖家网站</b>微信:syintb</p>
-            <p class="text-muted"><b class="mr-3">商品说明</b><p>**填写联系方式是用于查询订单，提取解压密码，切勿乱填。。。。。。。。。。。。。 **填写联系方式是用于查询订单，提取解压密码，切勿乱填。。。。。。。。。。。。。 **填写联系方式是用于查询订单，提取解压密码，切勿乱填。。。。。。。。。。。。。</p></p>
+            <p class="text-muted"><b class="mr-3">联系卖家</b>微信:dotafeiying</p>
+            <p class="text-muted"><b class="mr-3">卖家网站</b>微信:dotafeiying</p>
+            <p class="text-muted"><b class="mr-3">商品说明</b>
+              <p>**填写联系方式是用于查询订单，提取解压密码，切勿乱填。。。。。。。。。。。。。
+              **填写联系方式是用于查询订单，提取解压密码，切勿乱填。。。。。。。。。。。。。
+              **填写联系方式是用于查询订单，提取解压密码，切勿乱填。。。。。。。。。。。。。</p>
+            </p>
           </div>
         </div>
       </div>
       <div class="col-sm-7">
         {% csrf_token %}
 
-{#        {% include 'account/snippets/bs4_form.html' with form=form %}#}
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="goods_name">商品名称</label>
@@ -93,43 +71,16 @@
           </div>
           <div class="form-group col-md-6">
             <label for="{{ form.email.id_for_label }}">联系方式</label>
-            {{ form.email|add_class:'form-control'|attr:"lay-verify:email" }}
+            {{ form.email|add_class:'form-control'|attr:"lay-verify:email"|attr:"value:843514174@qq.com" }}
             <small id="email_help" class="form-text text-muted">{{ form.email.help_text }}</small>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="{{ form.pay_method.id_for_label }}">联系方式</label>
-            {{ form.pay_method }}
-            <small id="email_help" class="form-text text-muted">{{ form.pay_method.help_text }}</small>
           </div>
         </div>
 
         {% if redirect_field_value %}
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
         {% endif %}
-
-{#        <div class="form-group">#}
-{#          <button type="submit" class="btn btn-primary btn-block">提交</button>#}
-{#        </div>#}
       </div>
     </div>
-{#  <div class="row justify-content-between mt-5">#}
-{#    <div class="col-auto mr-auto">#}
-{#      <button type="button" class="btn btn-primary rounded-0">#}
-{#        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-qr-code"#}
-{#             viewBox="0 0 16 16">#}
-{#          <path d="M2 2h2v2H2V2Z"></path>#}
-{#          <path d="M6 0v6H0V0h6ZM5 1H1v4h4V1ZM4 12H2v2h2v-2Z"></path>#}
-{#          <path d="M6 10v6H0v-6h6Zm-5 1v4h4v-4H1Zm11-9h2v2h-2V2Z"></path>#}
-{#          <path d="M10 0v6h6V0h-6Zm5 1v4h-4V1h4ZM8 1V0h1v2H8v2H7V1h1Zm0 5V4h1v2H8ZM6 8V7h1V6h1v2h1V7h5v1h-4v1H7V8H6Zm0 0v1H2V8H1v1H0V7h3v1h3Zm10 1h-1V7h1v2Zm-1 0h-1v2h2v-1h-1V9Zm-4 0h2v1h-1v1h-1V9Zm2 3v-1h-1v1h-1v1H9v1h3v-2h1Zm0 0h3v1h-2v1h-1v-2Zm-4-1v1h1v-2H7v1h2Z"></path>#}
-{#          <path d="M7 12h1v3h4v1H7v-4Zm9 2v2h-3v-1h2v-1h1Z"></path>#}
-{#        </svg>#}
-{#        扫码支付#}
-{#      </button>#}
-{#    </div>#}
-{#    <div class="col-auto">#}
-{#      One of two columns#}
-{#    </div>#}
-{#  </div>#}
     <div class="row">
       <div class="col-md-12">
         <div class="card rounded-0">
@@ -147,82 +98,27 @@
             </div>
             <div class="float-right d-inline py-2 px-3 " style="color: #f97c73">应付总额：<b id="amountShow">12.00</b>元</div>
           </div>
-          <div class="card-body paydemo-type-body d-flex flex-row align-items-center">
-{#            <button class="d-inline py-2 px-5 mx-3 bg-primary text-white">#}
-{#              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-alipay"#}
-{#                   viewBox="0 0 16 16">#}
-{#                <path d="M2.541 0H13.5a2.551 2.551 0 0 1 2.54 2.563v8.297c-.006 0-.531-.046-2.978-.813-.412-.14-.916-.327-1.479-.536-.303-.113-.624-.232-.957-.353a12.98 12.98 0 0 0 1.325-3.373H8.822V4.649h3.831v-.634h-3.83V2.121H7.26c-.274 0-.274.273-.274.273v1.621H3.11v.634h3.875v1.136h-3.2v.634H9.99c-.227.789-.532 1.53-.894 2.202-2.013-.67-4.161-1.212-5.51-.878-.864.214-1.42.597-1.746.998-1.499 1.84-.424 4.633 2.741 4.633 1.872 0 3.675-1.053 5.072-2.787 2.08 1.008 6.37 2.738 6.387 2.745v.105A2.551 2.551 0 0 1 13.5 16H2.541A2.552 2.552 0 0 1 0 13.437V2.563A2.552 2.552 0 0 1 2.541 0Z"/>#}
-{#                <path d="M2.309 9.27c-1.22 1.073-.49 3.034 1.978 3.034 1.434 0 2.868-.925 3.994-2.406-1.602-.789-2.959-1.353-4.425-1.207-.397.04-1.14.217-1.547.58Z"/>#}
-{#              </svg>#}
-{#              支付宝支付#}
-{#            </button>#}
-{#            <button class="d-inline py-2 px-5 mx-3 bg-primary text-white">#}
-{#              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-qr-code"#}
-{#                   viewBox="0 0 16 16">#}
-{#                <path d="M2 2h2v2H2V2Z"></path>#}
-{#                <path d="M6 0v6H0V0h6ZM5 1H1v4h4V1ZM4 12H2v2h2v-2EZ"></path>#}
-{#                <path d="M6 10v6H0v-6h6Zm-5 1v4h4v-4H1Zm11-9h2v2h-2V2Z"></path>#}
-{#                <path d="M10 0v6h6V0h-6Zm5 1v4h-4V1h4ZM8 1V0h1v2H8v2H7V1h1Zm0 5V4h1v2H8ZM6 8V7h1V6h1v2h1V7h5v1h-4v1H7V8H6Zm0 0v1H2V8H1v1H0V7h3v1h3Zm10 1h-1V7h1v2Zm-1 0h-1v2h2v-1h-1V9Zm-4 0h2v1h-1v1h-1V9Zm2 3v-1h-1v1h-1v1H9v1h3v-2h1Zm0 0h3v1h-2v1h-1v-2Zm-4-1v1h1v-2H7v1h2Z"></path>#}
-{#                <path d="M7 12h1v3h4v1H7v-4Zm9 2v2h-3v-1h2v-1h1Z"></path>#}
-{#              </svg>#}
-{#              微信支付#}
-{#            </button>#}
+          <div class="card-body pay-type-body d-flex flex-row align-items-center">
             {% for value, displayable in form.pay_method.field.choices %}
-              <div class="paydemo-type color-change p-3 {% if form.pay_method.value == value %} this {% endif %}" code="{{ value }}">
+              <div class="pay-type color-change p-3 {% if form.pay_method.value == value %} this {% endif %}" code="{{ value }}">
                 {% if value == '1' %}
-                  <img src="/static/app/images/payType/alipay.svg" class="paydemo-type-img">
+                  <img src="/static/app/images/payType/alipay.svg">
                 {% elif value == '2' %}
-                  <img src="/static/app/images/payType/wechat.svg" class="paydemo-type-img">
+                  <img src="/static/app/images/payType/wechat.svg">
                 {% endif %}
                 <span class="color-change {% if form.pay_method.value == value %} this {% endif %}">{{ displayable }}</span>
               </div>
             {% endfor %}
-{#            <div class="paydemo-type color-change p-3" code="{{ ALI_QR_CASHIER }}">#}
-{#							<img src="/static/app/images/payType/wechat.svg" class="paydemo-type-img">#}
-{#							<span class="color-change">微信支付</span>#}
-{#						</div>#}
-{#						<div class="paydemo-type color-change p-3 this" code="ALI_PC">#}
-{#							<img src="/static/app/images/payType/alipay.svg" class="paydemo-type-img">#}
-{#							<span class="color-change this">支付宝支付</span>#}
-{#						</div>#}
           </div>
         </div>
       </div>
     </div>
-
-{#    <div class="row justify-content-center">#}
-{#      <div class="col-md-auto">#}
-{#        <button type="submit" class="btn btn-primary">确认支付</button>#}
-{#      </div>#}
-{#    </div>#}
     <div class="row">
       <div class="col d-flex justify-content-center mt-5">
-{#        <button type="button" lay-submit lay-filter="pay_test" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">确认支付</button>#}
-        <button type="button" id='testSubmitBtn' class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">确认支付</button>
+        <button type="button" lay-submit lay-filter="pay" class="btn btn-primary">确认支付</button>
       </div>
     </div>
   </form>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 {% endblock %}
@@ -230,7 +126,7 @@
 {% block script %}
   <script>
     // 切换支付方式
-		$(".paydemo-type").click(function () {
+		$(".pay-type").click(function () {
 			$(".color-change").removeClass("this");
 			$(this).addClass("this");
 			$(this).find(".color-change").addClass("this");
@@ -239,54 +135,16 @@
   <script>
     layui.use(['layer', 'form'], function () {
       var form = layui.form;
+      var index;
+      var is_check_pay = false;
 
-      $('#exampleModal').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget) // Button that triggered the modal
-          var recipient = button.data('whatever') // Extract info from data-* attributes
-          // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-          // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-
-          console.log(22)
-          var modal = $(this)
-
-          form.submit('test1', function (data) {
-            console.log(data.field)
-            var goods_id = {{ goods.id }}
-            var total_count = data.field.total_count
-            var email = data.field.email
-            var csrf = data.field.csrfmiddlewaretoken
-            const wayCode = $(".paydemo-type-body").find(".this").eq(0).attr("code");
-            const reg = /^([1-9]\d{0,1}|0)(\.\d{1,2})?$/;
-            if (!total_count || !reg.test(total_count) || total_count <= 0) {
-                layer.alert('请输入正确的购买数量，0-100之间');
-                return false;
-            }
-            var reqData = {};
-            reqData.goods_id = goods_id;
-            reqData.total_count = parseInt(total_count) || 0;
-            reqData.email = email;
-            reqData.pay_method = wayCode;
-            reqData.total_price = $('#amountShow').text();
-            reqData.csrfmiddlewaretoken = csrf;
-            console.log(reqData);
-            $.post('/order/commit', reqData, function (data) {
-                console.log(data.res);
-                modal.find('.modal-title').text('New message to ' + data.errmsg)
-                if (data.res == 0) {
-
-                }
-            })
-          })
-      })
-
-      {% comment %}form.on('submit(pay_test)', function (data) {
-          console.log(data);
-          console.log(data.field)
+      form.on('submit(pay)', function (data) {
+          is_check_pay = false
           var goods_id = {{ goods.id }}
           var total_count = data.field.total_count
           var email = data.field.email
           var csrf = data.field.csrfmiddlewaretoken
-          const wayCode = $(".paydemo-type-body").find(".this").eq(0).attr("code");
+          const wayCode = $(".pay-type-body").find(".this").eq(0).attr("code");
           const reg = /^([1-9]\d{0,1}|0)(\.\d{1,2})?$/;
           if (!total_count || !reg.test(total_count) || total_count <= 0) {
               layer.alert('请输入正确的购买数量，0-100之间');
@@ -303,22 +161,134 @@
           $.post('/order/commit', reqData, function (data) {
               console.log(data.res);
               if (data.res == 0) {
-
+                  index = layer.open({
+                      type: 1,
+                      title: '支付信息',
+                      area: 'auto',
+                      maxWidth: '550',
+                      content: data.data.html
+                  });
+              } else {
+                  layer.alert(data.errmsg)
               }
           })
+      })
 
+      $(document).on('click', '#agree', function () {
+        var csrf = $('input[name="csrfmiddlewaretoken"]').val()
+        $.post('{% url "terms" %}', {'csrfmiddlewaretoken': csrf}, function (str) {
+            layer.open({
+                type: 1,
+                title: '用户协议',
+                area: 'auto',
+                maxWidth: '800',
+                content: str //注意，如果str是object，那么需要字符拼接。
+            });
+        });
+      });
 
-      }){% endcomment %}
+      $(document).on('click', '#order_pay', function () {
+          is_check_pay = true
+          var order_no = $('#order_pay').attr('order_no')
+          var csrf = $('input[name="csrfmiddlewaretoken"]').val()
+          var checked = $('input[name="agree"]').prop('checked')
+          var params = {'order_no': order_no, 'checked': checked, 'csrfmiddlewaretoken': csrf}
+          layer.close(index)
+          $.ajax({
+              url: '{% url "order_pay" %}',
+              method: 'POST',
+              headers:{'X-CSRFToken': csrf},
+              data: JSON.stringify(params),
+              contentType: 'application/json',
+              success: function (data) {
+                  if (data.res == 0) {
+                      window.open(data.pay_url);
+                      var getting = {
+                          type: 'post',
+                          url: '{% url "order_check" %}',
+                          timeout: 30000,
+                          data: params,
+                          success: function (d) {
+                              if (d.res == 0) {
+                                  layer.confirm("<div>支付成功! <br>您的订单号为：" + order_no + "，点击确定获取卡密</div>", {title: '提示'}, function (index) {
+                                      layer.close(index);
+                                      window.open('{% url "order_detail" %}' + '?order_no=' + order_no)
+                                  });
+                              } else if (d.res == 3) {
+                                  setTimeout(getData, 3000)
+                              } else {
+                                  layer.alert(d.errmsg)
+                              }
+                          },
+                          error: function (XMLHttpRequest, textStatus, errorThrown) {
+                              setTimeout(getData, 1000)
+                          }
+                      }
+
+                      function getData() {
+                          if (is_check_pay) {
+                              $.ajax(getting);
+                          }
+                      }
+
+                      getData()
+                  } else {
+                      layer.alert(data.errmsg)
+                  }
+              }
+          })
+          {% comment %}$.post('{% url "order_pay" %}', params, function (data) {
+              if (data.res == 0) {
+                  window.open(data.pay_url);
+                  var getting = {
+                      type: 'post',
+                      url: '{% url "order_check" %}',
+                      timeout: 30000,
+                      data: params,
+                      success: function (d) {
+                          if (d.res == 0) {
+                              layer.open({
+                                  content: "<p>支付成功! <br>您的订单号为：" + order_no + "，点击确定获取卡密</p>",
+                                  yes: function (index, layero) {
+                                      layer.close(index); //如果设定了yes回调，需进行手工关闭
+                                      window.open('{% url "order_detail" %}' + '?order_no=' + order_no)
+                                  }
+                              });
+                              layer.confirm("<div>支付成功! <br>您的订单号为：" + order_no + "，点击确定获取卡密</div>", {title: '提示'}, function (index) {
+                                  layer.close(index);
+                                  window.open('{% url "order_detail" %}' + '?order_no=' + order_no)
+                              });
+                          } else if (d.res == 3) {
+                              setTimeout(getData, 3000)
+                          } else {
+                              layer.alert(d.errmsg)
+                          }
+                      },
+                      error: function (XMLHttpRequest, textStatus, errorThrown) {
+                          setTimeout(getData, 1000)
+                      }
+                  }
+                  function getData() {
+                      if (is_check_pay) {
+                          $.ajax(getting);
+                      }
+                  }
+                  getData()
+              } else {
+                  layer.alert(data.errmsg)
+              }
+          }){% endcomment %}
+      });
+
     })
     $(function () {
         $('#id_total_count').on('input', function (e) {
-            console.log(e.target.value);
             var dprice = parseFloat($('#price').text()) || 0;
             var quantity = parseInt(e.target.value) || 0;
-            {#var total_price = e.target.value * parseFloat($('#price').text())#}
             var gprice = parseFloat(dprice * quantity).toFixed(2);
             $('#amountShow').text(gprice)
         })
     })
+
   </script>
 {% endblock %}

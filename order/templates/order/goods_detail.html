@@ -1,4 +1,4 @@
-{% extends 'app/base.html' %}
+{% extends 'order/base.html' %}
 {% load static %}
 {% block title %}研狗插件{% endblock %}
 
@@ -6,14 +6,14 @@
 {% load account socialaccount %}
 {% load widget_tweaks %}
 
-{%  block extend_style %}
-    <link rel="stylesheet" type="text/css" href="{% static "app/lib/bootstrap-4.6.1/css/bootstrap.min.css" %}">
-{% endblock %}
-
-{%  block extend_js %}
-    <script type="text/javascript" src="{% static "app/js/jquery-3.6.1.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "app/lib/bootstrap-4.6.1/js/bootstrap.min.js" %}"></script>
-{% endblock %}
+{#{%  block extend_style %}#}
+{#    <link rel="stylesheet" type="text/css" href="{% static "app/lib/bootstrap-4.6.1/css/bootstrap.min.css" %}">#}
+{#{% endblock %}#}
+{##}
+{#{%  block extend_js %}#}
+{#    <script type="text/javascript" src="{% static "app/js/jquery-3.6.1.min.js" %}"></script>#}
+{#    <script type="text/javascript" src="{% static "app/lib/bootstrap-4.6.1/js/bootstrap.min.js" %}"></script>#}
+{#{% endblock %}#}
 
 {% block content %}
   <div class="actions">
@@ -24,21 +24,20 @@
     <div class="action kf">订单查询</div>
   </a>
   </div>
-<div class="container" style="margin: 128px auto">
+<div class="container" style="margin: 190px auto;">
   <form class="layui-form" id="signup_form" method="post" action="{% url 'order_pay' %}">
     <div class="row mb-4">
       <div class="col-sm-5 left-card">
         <div class="card rounded-0">
-          <div class="card-header">研狗插件</div>
+          <div class="card-header text-center rounded-0 bg-primary-blue text-white">研狗插件</div>
           <div class="card-body">
             <p class="small-card">
               <span class="badge badge-light font-weight-normal">数字卡密</span>
               <span class="badge badge-light font-weight-normal">自动发货</span>
               <span class="badge badge-light font-weight-normal">信誉卖家</span>
-              <span class="label label-default">默认标签</span>
             </p>
-            <p class="text-muted"><b class="mr-3">联系卖家</b>微信:dotafeiying</p>
-            <p class="text-muted"><b class="mr-3">卖家网站</b>微信:dotafeiying</p>
+            <p class="text-muted" style="text-indent: -5rem;padding-left: 5rem"><b class="mr-3">联系卖家</b>微信:dotafeiying<br><small class="text-danger">商品问题联系卖家</small></p>
+            <p class="text-muted"><b class="mr-3">卖家网站</b><a href="" class="text-primary">点击浏览</a></p>
             <p class="text-muted"><b class="mr-3">商品说明</b>
               <p>**填写联系方式是用于查询订单，提取解压密码，切勿乱填。。。。。。。。。。。。。
               **填写联系方式是用于查询订单，提取解压密码，切勿乱填。。。。。。。。。。。。。
@@ -85,7 +84,7 @@
       <div class="col-md-12">
         <div class="card rounded-0">
           <div class="card-header p-0">
-            <div class="float-left d-inline py-2 px-5 bg-primary text-white">
+            <div class="float-left d-inline py-2 px-5 bg-primary-blue text-white">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-qr-code"
                    viewBox="0 0 16 16">
                 <path d="M2 2h2v2H2V2Z"></path>

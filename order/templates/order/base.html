@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    {% load socialaccount %}
+
+    <link rel="shortcut icon" href="{% static "app/luxijie_favicon.ico" %}" type="image/x-icon">
+    <link rel="icon" href="{% static "app/luxijie_favicon.ico" %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/lib/layui/css/layui.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static "app/lib/bootstrap-4.6.1-custom/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    {%  block extend_style %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href='/static/app/css/screen.css?v=ea2a43dfbe'>
+{#    <link rel="stylesheet" type="text/css" href="{% static 'app/css/screen.css?v=ea2a43dfbe' %}">#}
+
+{#    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css?v=a9146369e2' %}">#}
+    <link rel="stylesheet" type="text/css" href='/static/app/css/style.css?v=a9146369e2'>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/lib/font-awesome/css/font-awesome.min.css' %}">
+
+    <script type="text/javascript" src="{% static "app/js/jquery-3.6.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "app/lib/bootstrap-4.6.1-custom/js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static 'app/lib/layui/layui.js' %}"></script>
+    {% block extend_js %}{% endblock %}
+    <style>
+        /*导航栏滚动样式*/
+        .rc-headWhite {
+            color: #000;
+            box-shadow: rgba(0, 0, 0, 0.06) 0 0 10px 2px;
+        }
+    </style>
+</head>
+<body>
+    {% block header %}
+      <!--导航栏-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="{% url 'app:home' %}">
+                <img alt="Image placeholder" src="{% static "app/images/luxijie_logo_v7.png" %}" height="36px" id="navbar-logo">
+            </a>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mt-4 mt-lg-0 ml-auto justify-content-between">
+                    <li class="nav-item px-4 {% if request.path %}{% endif %}">
+                        <a class="nav-link" href="{% url 'app:home' %}" target="_blank">首页</a>
+                    </li>
+{#                    <li class="nav-item dropdown dropdown-animate" data-toggle="hover">#}
+{#                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>#}
+{#                        <div class="dropdown-menu dropdown-menu-single">#}
+{#                            <a href="index.html" class="dropdown-item">Homepage</a>#}
+{#                            <a href="about.html" class="dropdown-item">About us</a>#}
+{#                            <a href="contact.html" class="dropdown-item">Contact</a>#}
+{#                            <div class="dropdown-divider"></div>#}
+{#                            <a href="login.html" class="dropdown-item">Login</a>#}
+{#                        </div>#}
+{#                    </li>#}
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="{% url 'order_detail' %}">订单查询</a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="{% url 'post_detail' %}">订单投诉</a>
+                    </li>
+                </ul>
+                <!-- Button -->
+                <a class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" href="{% url 'account_login' %}">
+                    商户登录
+                </a>
+                <!-- Mobile button -->
+                <div class="d-lg-none text-center">
+                    <a href="https://webpixels.io/themes/quick-website-ui-kit" class="btn btn-block btn-sm btn-warning">See more details</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}
+
+
+    {% block content %}{% endblock %}
+
+    {% block footer %}
+        <!-- footer -->
+{#        <div class="rc-footer">#}
+{#            <div class="slogan d-flex justify-content-center align-items-center">#}
+{#                <img src="{% static 'app/images/luxijie_logo_v6.png' %}" alt="力软信息,ASP.NET框架,开源平台">#}
+{#                <span>让开发变得更简单</span>#}
+{#            </div>#}
+{#            <div class="tail">#}
+{#                <div class="lrwell">#}
+{#                    <div class="well-text">#}
+{#                        <span class="title">产品</span>#}
+{#                        <p><a href="http://learun.cn:8090/" target="_blank" title="力软信息,快速开发平台,快速开发框架">敏捷开发平台</a></p>#}
+{#                    </div>#}
+{#                    <div class="well-text">#}
+{#                        <span class="title">行业客户</span>#}
+{#                        <p><a href="/Home/CaseContent?id=demo7" title="力软信息,快速开发平台,快速开发框架">建筑/房地产</a></p>#}
+{#                        <p><a href="/Home/CaseContent?id=demo6" title="力软信息,快速开发平台,快速开发框架">教育培训</a></p>#}
+{#                        <p><a href="/Home/CaseContent?id=demo10" title="力软信息,快速开发平台,快速开发框架">科研机构</a></p>#}
+{#                        <p><a href="/Home/CaseContent?id=demo8" title="力软信息,快速开发平台,快速开发框架">航天航空</a></p>#}
+{#                    </div>#}
+{#                    <div class="well-text more">#}
+{#                        <p><a href="/Home/CaseContent?id=demo11" title="力软信息,快速开发平台,快速开发框架">快递物流</a></p>#}
+{#                        <p><a href="/Home/CaseContent?id=demo5" title="力软信息,快速开发平台,快速开发框架">矿产石油</a></p>#}
+{#                        <p><a href="/Home/CaseContent?id=demo9" title="力软信息,快速开发平台,快速开发框架">电力电气</a></p>#}
+{#                        <p><a href="/Home/CaseContent?id=demo12" title="力软信息,快速开发平台,快速开发框架">机械制造</a></p>#}
+{#                    </div>#}
+{#                    <div class="well-text">#}
+{#                        <span class="title">关于力软</span>#}
+{#                        <p><a href="/Home/About?id=0" title="力软信息,快速开发平台,快速开发框架">公司简介</a></p>#}
+{#                        <p><a href="/Home/About?id=2" title="力软信息,快速开发平台,快速开发框架">加入我们</a></p>#}
+{#                        <p><a href="/Home/About?id=3" title="力软信息,快速开发平台,快速开发框架">使用条款</a></p>#}
+{#                        <p><a href="/Home/About?id=4" title="力软信息,快速开发平台,快速开发框架">汇款帐号</a></p>#}
+{#                    </div>#}
+{#                    <div class="well-text">#}
+{#                        <span class="title">联系我们</span>#}
+{#                        <p>总部：13671911811</p>#}
+{#                        <p>分部：0512-67227790</p>#}
+{#                    </div>#}
+{#                    <div class="code">#}
+{#                        <div class="wechat" style="float: left; margin-right: 50px;">#}
+{##}
+{#                        </div>#}
+{#                        <div class="app" style="float: left;margin-right: 50px;">#}
+{#                            <div class="img">#}
+{#                                <p>微信公众号</p>#}
+{#                                <a>#}
+{#                                    <img src="/static/app/images/wechat.jpg" alt="力软信息,ASP.NET框架,开源平台">#}
+{#                                </a>#}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="icp">#}
+{#                    <span>Copyright © 2018 上海力软信息技术有限公司 版权所有 备案号：沪ICP备14034717号</span>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+      <footer class="position-relative" id="footer-main">
+        <div class="footer pt-lg-7 footer-dark bg-dark">
+            <!-- SVG shape -->
+            <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
+                <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve" class=" fill-section-secondary">
+                    <polygon points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+            <!-- Footer -->
+            <div class="container pt-4">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <!-- Theme's logo -->
+                        <a href="index.html">
+                            <img alt="Image placeholder" src="{% static 'app/images/luxijie_logo_v6.png' %}" height="37px" id="footer-logo">
+                        </a>
+                        <!-- Webpixels' mission -->
+                        <p class="mt-4 text-sm opacity-8 pr-lg-4">Webpixels attempts to bring the best development experience to designers and developers by offering the tools needed for having a quick and solid start in most web projects.</p>
+                        <!-- Social -->
+                        <ul class="nav mt-4">
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="https://dribbble.com/webpixels" target="_blank">
+                                    <i class="bi bi-dribbble"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/webpixels" target="_blank">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.instagram.com/webpxs" target="_blank">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.facebook.com/webpixels" target="_blank">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">Account</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">Billing</a></li>
+                            <li><a href="#">Notifications</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">About</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">Company</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">Help center</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="divider divider-fade divider-dark my-4">
+                <div class="row align-items-center justify-content-md-between pb-4">
+                    <div class="col-md-6">
+                        <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                            © 2020 <a href="https://webpixels.io" class="font-weight-bold" target="_blank">Webpixels</a>. All rights reserved
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Terms
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Privacy
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Cookies
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+
+
+
+</body>
+<script>
+  //Sticky
+  $(window).scroll(function() {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 50) {
+          $("nav.navbar").addClass("rc-headWhite");
+      } else {
+          $("nav.navbar").removeClass("rc-headWhite");
+      }
+  });
+
+  $("#navbarCollapse li.nav-item a").each(function () {
+        if (location.href.indexOf(this.href) === 0) {
+            $(this).parent().addClass('active')
+        }
+    })
+</script>
+{% block script %}{% endblock %}
+</html>

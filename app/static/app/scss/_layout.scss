@@ -153,8 +153,7 @@ SMACSS: LAYOUT - FOOTER
       display: inline-block;
       vertical-align: bottom;
       margin-top: 5px;
-      width: 225px;
-      height: 35px;
+      height: 75px;
     }
     span {
       display: inline-block;
@@ -224,6 +223,49 @@ SMACSS: LAYOUT - FOOTER
     padding-bottom: 50px;
   }
 }
+
+//.shape {
+//  position: absolute;
+//  pointer-events: none;
+//}
+//
+//.shape > * {
+//  display: block;
+//}
+//
+//.shape:not([class*="shape-blur"]) {
+//  overflow: hidden;
+//}
+//
+//.shape:not([class*="shape-blur"]) > * {
+//  transform: scale(2);
+//}
+//
+//// Hide SVG images in IE
+//
+//@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+//
+//  .shape > svg {
+//    display: none;
+//  }
+//}
+//
+//.shape-bottom {
+//  right: 0;
+//  bottom: 0;
+//  left: 0;
+//}
+//
+//.shape-bottom > * {
+//  transform-origin: top center;
+//}
+//
+//// Orientation
+//
+//.shape-fluid-x > * {
+//  width: 100%;
+//  height: auto;
+//}
 
 /*-------------------------------------------------
 SMACSS: LAYOUT - 适配屏幕

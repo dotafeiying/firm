@@ -49,6 +49,31 @@ ACCOUNT_LOGOUT_REDIRECT_URL (="/")
 # 用户登出是否需要确认确认(True表示直接退出，不用确认；False表示需要确认)
 ACCOUNT_LOGOUT_ON_GET (=True)
 ```
+# docker测试
+## 删除镜像
+```shell
+# 启动所有镜像
+sudo docker start $(sudo docker ps -a -q)
+
+# stop停止所有容器
+sudo docker stop $(sudo docker ps -a -q)
+
+# remove删除所有容器
+sudo docker rm $(sudo docker ps -a -q)
+
+# docker中 删除所有的镜像
+sudo docker rmi $(sudo docker images | awk '{print $3}' |tail -n +2)
+```
+
+## docker镜像
+```angular2html
+sudo docker run -it --name python3.7 python:3.7 bash
+sudo docker cp /share/firm/ ee5571ba4d5a:/home
+```
+django运行命令
+```shell
+python manage.py runserver 0.0.0.0:5000
+```
 
 - 升级django版本2.0到2.1.5
 

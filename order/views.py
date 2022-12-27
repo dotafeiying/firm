@@ -73,6 +73,12 @@ def order_commit(request):
 
 def return_url(request):
     if request.method == 'GET':
+        logger.debug(request.get_full_path())
+        logger.debug(request.get_host())
+        logger.debug(request.get_raw_uri())
+        logger.debug(request.scheme)
+        logger.debug(request.path_info)
+        logger.debug(request.get_port())
         params = request.GET.dict()
         sign = params.pop('sign')
         order_no = request.GET.get('out_trade_no')
@@ -165,8 +171,11 @@ def order_pay(request):
             out_trade_no=order_no,  # 订单id
             total_amount=str(total_pay),  # 订单的实付款
             subject='测试订单%s' % order_no,  # 订单标题
-            return_url='http://127.0.0.1:5000' + reverse('return_url'),
-            notify_url='http://luxijie.asuscomm.com:5000' + reverse('notify_url')  # 可选, 不填则使用默认notify url
+            return_url=f'{request.scheme}://{request.get_host()}' + reverse('return_url'),
+            # return_url='http://127.0.0.1:5000' + reverse('return_url'),
+            # notify_url='http://luxijie.asuscomm.com:5000' + reverse('notify_url')  # 可选, 不填则使用默认notify url
+            notify_url = f'{request.scheme}://{request.get_host()}' + reverse('notify_url')  # 可选, 不填则使用默认notify url
+
         )
 
         pay_url = settings.ALIPAY_URL + "?" + order_string
@@ -410,6 +419,9 @@ def notify_url(request):
         logger.debug(request.get_full_path())
         logger.debug(request.get_host())
         logger.debug(request.get_raw_uri())
+        logger.debug(request.scheme)
+        logger.debug(request.path_info)
+        logger.debug(request.get_port())
         # from urllib.parse import parse_qs
         #
         # body_str = request.body.decode('utf-8')

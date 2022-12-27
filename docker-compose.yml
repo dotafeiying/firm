@@ -7,15 +7,22 @@ services:
       - ./deployment/redis:/data
     ports:
       - "6399:6379"
+    environment:
+      - TZ=Asia/Shanghai
     restart: always # always表容器运行发生错误时一直重启
 
   db:
-    image: mysql:5.7
+    image: mysql:5.7.23
+#    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci #设置utf8字符集
     environment:
       - MYSQL_DATABASE=firm # 数据库名称
       - MYSQL_ROOT_PASSWORD=123456 # 数据库密码
+#      - MYSQL_USER=my_test
+#      - MYSQL_PASSWORD=my_test
+      - TZ=Asia/Shanghai
     volumes:
       - ./deployment/mysql/data:/var/lib/mysql # 挂载数据库数据
+#      - ./deployment/mysql/conf.d:/etc/mysql/conf.d
       - ./deployment/mysql/conf/my.cnf:/etc/mysql/my.cnf # 挂载配置文件
       - ./deployment/mysql/init:/docker-entrypoint-initdb.d/ # 挂载数据初始化sql脚本
     ports:
@@ -26,8 +33,8 @@ services:
     build: .
     expose:
       - "8000"
-#    volumes:
-#      - .:/firm
+    volumes:
+      - .:/firm
 #      - ./logs:/tmp
     command: bash start.sh
     links:
@@ -36,6 +43,8 @@ services:
     depends_on:
       - db
       - redis
+    environment:
+      - TZ=Asia/Shanghai
     restart: always
 
   nginx:
@@ -44,12 +53,16 @@ services:
       - "80:80"
       - "443:443"
     expose:
-      - "8000"
+      - "80"
     volumes:
       - ./static:/usr/share/nginx/html/static # 挂载静态文件
       - ./media:/usr/share/nginx/html/media # 挂载上传文件
+      - ./deployment/nginx/ssl:/usr/share/nginx/ssl
+      - ./deployment/nginx/log:/var/log/nginx
     links:
       - web
     depends_on:
       - web
+    environment:
+      - TZ=Asia/Shanghai
     restart: always

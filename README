@@ -75,6 +75,8 @@ django运行命令
 python manage.py runserver 0.0.0.0:5000
 ```
 
+部署参考：https://blog.csdn.net/weixin_45457042/article/details/127194130
+
 - 升级django版本2.0到2.1.5
 
 - 完成注册登录界面美化

@@ -1,10 +1,15 @@
 version: "3"
+volumes:
+  db_vol:
+  redis_vol:
+  media_vol:
 services:
   redis:
-    image: redis:latest
+    image: redis:4.0.14
     command: redis-server
     volumes:
-      - ./deployment/redis:/data
+      - redis_vol:/data
+      - ./deployment/redis/redis.conf:/usr/local/etc/redis/redis.conf
     ports:
       - "6399:6379"
     environment:
@@ -21,8 +26,7 @@ services:
 #      - MYSQL_PASSWORD=my_test
       - TZ=Asia/Shanghai
     volumes:
-      - ./deployment/mysql/data:/var/lib/mysql # 挂载数据库数据
-#      - ./deployment/mysql/conf.d:/etc/mysql/conf.d
+      - db_vol:/var/lib/mysql # 挂载数据库数据
       - ./deployment/mysql/conf/my.cnf:/etc/mysql/my.cnf # 挂载配置文件
       - ./deployment/mysql/init:/docker-entrypoint-initdb.d/ # 挂载数据初始化sql脚本
     ports:
@@ -35,6 +39,7 @@ services:
       - "8000"
     volumes:
       - .:/firm
+      - media_vol:/firm/media
 #      - ./logs:/tmp
     command: bash start.sh
     links:
@@ -56,7 +61,7 @@ services:
       - "80"
     volumes:
       - ./static:/usr/share/nginx/html/static # 挂载静态文件
-      - ./media:/usr/share/nginx/html/media # 挂载上传文件
+      - media_vol:/usr/share/nginx/html/media # 挂载上传文件
       - ./deployment/nginx/ssl:/usr/share/nginx/ssl
       - ./deployment/nginx/log:/var/log/nginx
     links:

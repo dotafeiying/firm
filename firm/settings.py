@@ -109,12 +109,22 @@ WSGI_APPLICATION = 'firm.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'firm', # 数据库名
+         'USER':'root', # 你设置的用户名 - 非root用户
+         'PASSWORD':'123456', # # 换成你自己密码
+         'HOST': 'db', # 注意：这里使用的是db别名，docker会自动解析成ip
+         'PORT':'3306', # 端口
     }
-}
+ }
 
 
 # Password validation

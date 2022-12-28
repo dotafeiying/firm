@@ -32,7 +32,7 @@ class PublishedManager(models.Manager):
 
 class Case(models.Model):
     title = models.CharField('标题', max_length=256)
-    slug = models.SlugField('网址', max_length=256, unique=True)
+    slug = models.SlugField('网址', max_length=100, unique=True)
     img = models.ImageField('展示图片', upload_to='pictures/case/%Y/%m/%d')
     abstract = models.TextField('摘要', max_length=54, blank=True, null=True,
                                 help_text="可选项，最多54个字符")
@@ -149,7 +149,7 @@ class Customer(models.Model):
     type = models.ForeignKey(CustomerType, on_delete= None, verbose_name='案例类别')
     title = models.CharField('标题', max_length=256)
     img = models.ImageField('展示图片', upload_to='pictures/customer/%Y/%m/%d')
-    slug = models.CharField('网址', max_length=256, unique=True)
+    slug = models.CharField('网址', max_length=100, unique=True)
 
     # author = models.ForeignKey('auth.User', blank=True, null=True, verbose_name='作者')
     content = UEditorField('内容', height=300, width=1000,

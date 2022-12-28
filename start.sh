@@ -7,7 +7,7 @@
 # 5. 用 gunicorn 启动 django 服务
 
 # celery multi start w1 -A celery_tasks.tasks worker -l info&&
-# python manage.py collectstatic --noinput&&
-# python manage.py makemigrations&&
-# python manage.py migrate&&
+python manage.py collectstatic --noinput&&
+python manage.py makemigrations&&
+python manage.py migrate&&
 gunicorn firm.wsgi:application -c gunicorn.conf

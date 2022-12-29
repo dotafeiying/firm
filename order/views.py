@@ -134,7 +134,7 @@ def order_pay(request):
         logger.debug(request.get_port())
         request_data = json.loads(request.body.decode('utf-8'))
         order_no = request_data.get('order_no')
-        checked = request_data.get('checked')
+        checked = request_data.get('checked', True)
         print('check:',checked)
         print(type(checked))
 
@@ -171,7 +171,7 @@ def order_pay(request):
             out_trade_no=order_no,  # 订单id
             total_amount=str(total_pay),  # 订单的实付款
             subject='测试订单%s' % order_no,  # 订单标题
-            return_url=f'{request.scheme}://{request.get_host()}' + reverse('return_url'),
+            return_url=reverse('return_url'),
             # return_url='http://127.0.0.1:5000' + reverse('return_url'),
             # notify_url='http://luxijie.asuscomm.com:5000' + reverse('notify_url')  # 可选, 不填则使用默认notify url
             notify_url = f'{request.scheme}://{request.get_host()}' + reverse('notify_url')  # 可选, 不填则使用默认notify url

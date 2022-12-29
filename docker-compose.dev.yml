@@ -51,8 +51,8 @@ services:
     env_file:
       - .env
     environment:
-      - DEBUG=false
-      - NOTIFY=https://www.luxijie.top/order/notify_url
+      - DEBUG=true
+      - NOTIFY=https://www.luxijie.top:679/order/notify_url
       - TZ=Asia/Shanghai
     restart: always
 

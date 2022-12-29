@@ -124,49 +124,56 @@
                       layer.close(index);
                       is_check_pay = true
 
-                      $.post('{% url "order_pay" %}', params, function (data) {
-                          if (data.res == 0) {
-                              console.log(data.pay_url);
-                              window.open(data.pay_url);
-                              var getting = {
-                                  type: 'post',
-                                  url: '{% url "order_check" %}',
-                                  timeout: 30000,
-                                  data: params,
-                                  success: function (d) {
-                                      if (d.res == 0) {
-                                          {#layer.alert('支付成功')#}
-                                          layer.open({
-                                              content: "<p>支付成功! <br>您的订单号为：" + order_no + "，点击确定获取卡密</p>",
-                                              yes: function (idx, layero) {
-                                                  layer.close(idx); //如果设定了yes回调，需进行手工关闭
-                                                  window.open('{% url "order_detail" %}' + '?order_no=' + order_no)
-                                              }
-                                          });
-                                          {#location.reload()#}
-                                      } else if (d.res == 3) {
-                                          {#alert(d.errmsg)#}
-                                          {#$.ajax(getting);#}
-                                          setTimeout(getData, 3000)
-                                      } else {
-                                          layer.alert(d.errmsg)
+                      $.ajax({
+                          url: '{% url "order_pay" %}',
+                          method: 'POST',
+                          headers:{'X-CSRFToken': csrf},
+                          data: JSON.stringify(params),
+                          contentType: 'application/json',
+                          success: function (data) {
+                              if (data.res == 0) {
+                                  console.log(data.pay_url);
+                                  window.open(data.pay_url);
+                                  var getting = {
+                                      type: 'post',
+                                      url: '{% url "order_check" %}',
+                                      timeout: 30000,
+                                      data: params,
+                                      success: function (d) {
+                                          if (d.res == 0) {
+                                              {#layer.alert('支付成功')#}
+                                              layer.open({
+                                                  content: "<p>支付成功! <br>您的订单号为：" + order_no + "，点击确定获取卡密</p>",
+                                                  yes: function (idx, layero) {
+                                                      layer.close(idx); //如果设定了yes回调，需进行手工关闭
+                                                      window.open('{% url "order_detail" %}' + '?order_no=' + order_no)
+                                                  }
+                                              });
+                                              {#location.reload()#}
+                                          } else if (d.res == 3) {
+                                              {#alert(d.errmsg)#}
+                                              {#$.ajax(getting);#}
+                                              setTimeout(getData, 3000)
+                                          } else {
+                                              layer.alert(d.errmsg)
+                                          }
+                                      },
+                                      error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                          setTimeout(getData, 1000)
                                       }
-                                  },
-                                  error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                      setTimeout(getData, 1000)
                                   }
-                              }
 
-                              function getData() {
-                                  if (is_check_pay) {
-                                      $.ajax(getting);
+                                  function getData() {
+                                      if (is_check_pay) {
+                                          $.ajax(getting);
+                                      }
                                   }
+
+                                  getData()
+
+                              } else {
+                                  layer.alert(data.errmsg)
                               }
-
-                              getData()
-
-                          } else {
-                              layer.alert(data.errmsg)
                           }
                       })
                   },

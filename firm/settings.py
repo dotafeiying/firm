@@ -116,15 +116,15 @@ WSGI_APPLICATION = 'firm.wsgi.application'
 #     }
 # }
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'firm', # 数据库名
-         'USER':'root', # 你设置的用户名 - 非root用户
-         'PASSWORD':'123456', # # 换成你自己密码
-         'HOST': 'db', # 注意：这里使用的是db别名，docker会自动解析成ip
-         'PORT':'3306', # 端口
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'firm',  # 数据库名
+        'USER': 'root',  # 你设置的用户名 - 非root用户
+        'PASSWORD': '123456',  # # 换成你自己密码
+        'HOST': 'localhost',  # 注意：这里使用的是db别名，docker会自动解析成ip
+        'PORT': '3306',  # 端口
     }
- }
+}
 
 
 # Password validation

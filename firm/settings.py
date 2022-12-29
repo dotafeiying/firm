@@ -22,7 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ijq1iyu#6*q=l*k$h9ucmacd23_v+=9^m1_rio)8e)_6b*f=r!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+# DEBUG = True
+DEBUG = os.getenv('DEBUG', 'TRUE').lower() in ('on', 'true', 'y', 'yes')
 
 ALLOWED_HOSTS = ['*']
 
@@ -115,14 +117,24 @@ WSGI_APPLICATION = 'firm.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'firm',  # 数据库名
+#         'USER': 'root',  # 你设置的用户名 - 非root用户
+#         'PASSWORD': '123456',  # # 换成你自己密码
+#         'HOST': 'db',  # 注意：这里使用的是db别名，docker会自动解析成ip
+#         'PORT': '3306',  # 端口
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'firm',  # 数据库名
-        'USER': 'root',  # 你设置的用户名 - 非root用户
-        'PASSWORD': '123456',  # # 换成你自己密码
-        'HOST': 'db',  # 注意：这里使用的是db别名，docker会自动解析成ip
-        'PORT': '3306',  # 端口
+        "NAME": os.environ.get("DB_NAME", "firm"),  # 数据库名
+        "USER": os.environ.get("DB_USER", "root"),
+        "PASSWORD": os.environ.get("DB_PASS", "123456"),
+        "HOST": os.environ.get("DB_HOST", "localhost"),  # 注意：这里使用的是db别名，docker会自动解析成ip
+        "PORT": os.environ.get("DB_PORT", "3306"),
     }
 }
 

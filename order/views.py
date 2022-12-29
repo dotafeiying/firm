@@ -73,12 +73,6 @@ def order_commit(request):
 
 def return_url(request):
     if request.method == 'GET':
-        logger.debug(request.get_full_path())
-        logger.debug(request.get_host())
-        logger.debug(request.get_raw_uri())
-        logger.debug(request.scheme)
-        logger.debug(request.path_info)
-        logger.debug(request.get_port())
         params = request.GET.dict()
         sign = params.pop('sign')
         order_no = request.GET.get('out_trade_no')
@@ -132,6 +126,12 @@ def terms(request):
 
 def order_pay(request):
     if request.method == 'POST':
+        logger.debug(request.get_full_path())
+        logger.debug(request.get_host())
+        logger.debug(request.get_raw_uri())
+        logger.debug(request.scheme)
+        logger.debug(request.path_info)
+        logger.debug(request.get_port())
         request_data = json.loads(request.body.decode('utf-8'))
         order_no = request_data.get('order_no')
         checked = request_data.get('checked')

@@ -51,8 +51,9 @@ services:
     env_file:
       - .env
     environment:
+      - DEBUG=true
+      - NOTIFY=https://www.luxijie.top:679/order/notify_url
       - TZ=Asia/Shanghai
-      - DEBUG='true'
     restart: always
 
   nginx:

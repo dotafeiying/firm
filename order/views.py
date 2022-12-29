@@ -175,6 +175,7 @@ def order_pay(request):
             # return_url='http://127.0.0.1:5000' + reverse('return_url'),
             # notify_url='http://luxijie.asuscomm.com:5000' + reverse('notify_url')  # 可选, 不填则使用默认notify url
             notify_url = f'{request.scheme}://{request.get_host()}' + reverse('notify_url')  # 可选, 不填则使用默认notify url
+            # notify_url=settings.NOTIFY_URL  # 可选, 不填则使用默认notify url
 
         )
 

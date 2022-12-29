@@ -228,6 +228,8 @@ ALIPAY_APPID = '2021000121694528'
 ALIPAY_URL = "https://openapi.alipaydev.com/gateway.do"
 APP_PRIVATE_KEY_PATH = os.path.join(BASE_DIR, 'order/app_private_key.pem')
 ALIPAY_PUBLIC_KEY_PATH = os.path.join(BASE_DIR, 'order/alipay_public_key.pem')
+# NOTIFY_URL = os.environ.get('NOTIFY_URL', 'https://www.luxijie.top/order/notify_url')
+NOTIFY_URL = os.environ.get('NOTIFY_URL', 'http://luxijie.asuscomm.com:5000/order/notify_url')
 
 
 LOG_PATH = os.path.join(BASE_DIR, 'logs')

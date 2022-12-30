@@ -10,7 +10,7 @@ web_container_name=firm-web
 mysql_db=firm
 mysql_username=root
 mysql_password=123456
-media_dir=media
+media_dir=./media
 backup_dir=${parent_path}/backup
 
 backup_dir_date=${backup_dir}/`date +%Y-%m-%d`
@@ -41,17 +41,17 @@ do
 
         echo "3. Backup media to ${backup_dir_date}"
 #        tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz ${media_dir}
-        if [ -z "$(ls -A /tmp/${media_dir})" ];then
-          echo "/tmp/${media_dir} 为空目录.................."
+        if [ -z "$(ls -A /tmp/media)" ];then
+          echo "/tmp/media 为空目录.................."
         else
-          echo "/tmp/${media_dir} 不为空...................."
-          rm -rf /tmp/${media_dir}
+          echo "/tmp/media 不为空...................."
+          rm -rf /tmp/media
         fi
 
-        docker cp ${web_container_name}:/firm/${media_dir} /tmp
+        docker cp ${web_container_name}:${media_dir} /tmp
         cd /tmp
-        tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz ${media_dir}
-        rm -rf ${media_dir}
+        tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz media
+        rm -rf media
         cd "$parent_path"
 
         echo -e "-----  Backup Success!  -----\n"
@@ -84,7 +84,7 @@ do
 
         echo "3. Restore Media File"
         tar -zxvf ${backup_media} -C /tmp
-        docker cp /tmp/${media_dir} ${web_container_name}:/firm
+        docker cp /tmp/media ${web_container_name}:/firm
 
         echo -e "-----  Restore Done!  -----\n"
         ;;

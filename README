@@ -77,6 +77,121 @@ python manage.py runserver 0.0.0.0:5000
 
 部署参考：https://blog.csdn.net/weixin_45457042/article/details/127194130
 
+# 数据备份恢复
+参考：https://blog.csdn.net/z_johnny/article/details/104915016/
+## 使用方法
+
+```
+
+Usage: migrate [-b] [-c] [-r <*.sql.gz> <*.tar.gz>] [-t <"0 3 * * *">]
+
+  -b,   backup mysql and media
+  -c,   clean old-to-date backup
+  -r,   restore mysql and media
+  -t,   set cron schedule expressions
+```
+
+- `sh migrate -b` 开始备份
+- `sh migrate -c` 开始清理旧文件
+- `sh migrate -r *.sql.gz *.tar.gz` 开始恢复，注意顺序
+- `sh migrate -t "0 3 * * *"` 定时备份规则
+
+# 备份
+
+从我的 `Django` 项目来看，我要迁移的数据无非就是这两个
+
+1. `MySQL` 数据库的备份
+2. `media` 媒体文件，图片、视频、音乐之类的
+
+## 操作
+
+```bash
+sh migrate -b
+```
+
+如果脚本保持默认，即将 `MySQL备份（*.sql.gz）` 和 `media备份（*.tar.gz）` 存入 `backup/****-**-**/文件夹中`，请按需修改
+
+## 目录
+
+```shell
+.
+└── backup/
+    ├── 2019-12-11/
+    │   ├── media-20191211-1235.tar.gz
+    │   └── website-20191211-1235.sql.gz
+    ├── 2019-12-12/
+    │   ├── media-20191212-0326.tar.gz
+    │   └── website-20191212-0326.sql.gz
+    └── 2019-12-13/
+        ├── media-20191213-1624.tar.gz
+        └── website-20191213-1624.sql.gz
+```
+
+# 清理
+
+因为定时备份会占用很大的硬盘空间，而硬盘空间又是有限的，所以要定时清理，当前默认只保存3天的备份
+
+```bash
+sh migrate -c
+```
+
+# 开启定时备份
+
+我使用的是 `Linux` 自带的 `crontab` 定时任务。
+
+定时备份是一个好习惯，不要等到了服务器崩了的时候再去备份，那样可能会很麻烦。
+
+以下操作 **需要使用 `root` 用户**
+
+```
+sh migrate -t "0 3 * * *"
+```
+
+- “0 3 * * *” 是备份的周期，表示每天凌晨3点备份一次，参考时间规则查询网站：[crontab guru](https://crontab.guru/)
+
+原理：
+
+1. 输入`crontab -e`
+2. 添加内容：`0 3 * * * cd 目录 && sh migrate.sh -b -c`
+3. 保存退出
+
+# 备份文件的导出和导入
+
+## 导出
+
+手动导出或者利用 `e-mail` 将备份文件定时发到自己邮箱，这个按需使用吧，`基于Python的邮件模块`可以参考我的 [基于Python的邮件发送模块封装](https://github.com/hongweifuture/HwTTK/tree/master/HwSendEmail)，只要配置邮箱基本信息就可发送。
+
+## 导入
+
+1. 放在项目根目录，`sql` 无所谓，但 `media` 还是要的，所以干脆都放相同目录
+2. 项目容器运行，可用 `docker-compose ps` 查看
+
+目录：
+
+```
+.
+├── django
+├── migrate.sh
+├── docker-compose.yml
+├── media-20191212-0326.tar.gz
+├── nginx
+└── website-20191212-0326.sql.gz
+```
+
+# 恢复
+
+在一台新服务器上恢复项目，只需安装 `docker` 和 `docker-compose` 后，运行容器，恢复数据，即可完成迁移的全部工作
+
+```shell
+sh migrate -r *.sql.gz *.tar.gz
+```
+
+自动 `导入sql文件` 和 `解压静态媒体文件`
+
+好了，`导入文件`，`恢复SQL和mdeia`，**两步**就完成了服务器的迁移，用的了五分钟？那在导入文件的时间一定用了四分五十九秒~~
+
+就这样，神奇的事情发生了，一切数据全部保留~ enjoy~~
+
 - 升级django版本2.0到2.1.5
 
 - 完成注册登录界面美化

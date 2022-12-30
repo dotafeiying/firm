@@ -10,7 +10,7 @@ web_container_name=firm-web
 mysql_db=firm
 mysql_username=root
 mysql_password=123456
-media_dir=./media
+media_dir=/firm/media
 backup_dir=${parent_path}/backup
 
 backup_dir_date=${backup_dir}/`date +%Y-%m-%d`

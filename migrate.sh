@@ -5,7 +5,7 @@ web_container_name=firm-web
 mysql_db=firm
 mysql_username=root
 mysql_password=123456
-meida_dir=media
+media_dir=media
 backup_dir=./backup
 
 backup_dir_date=${backup_dir}/`date +%Y-%m-%d`
@@ -35,10 +35,10 @@ do
         docker exec -it ${mysql_container_name} /usr/bin/mysqldump -u ${mysql_username} --password=${mysql_password} ${mysql_db} | gzip > ${backup_dir_date}/website-${backup_date}.sql.gz
 
         echo "3. Backup media to ${backup_dir_date}"
-#        tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz ${meida_dir}
-        docker cp ${web_container_name}:${meida_dir} /tmp
-        tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz /tmp/${meida_dir}
-        rm -rf /tmp/${meida_dir}
+#        tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz ${media_dir}
+        docker cp ${web_container_name}:/firm/${media_dir} /tmp
+        tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz /tmp/${media_dir}
+        rm -rf /tmp/${media_dir}
 
         echo -e "-----  Backup Success!  -----\n"
         ;;
@@ -70,7 +70,7 @@ do
 
         echo "3. Restore Media File"
         tar -zxvf ${backup_meida} -C /tmp
-        docker cp /tmp/${meida_dir} ${web_container_name}:/firm
+        docker cp /tmp/${media_dir} ${web_container_name}:/firm
 
         echo -e "-----  Restore Done!  -----\n"
         ;;

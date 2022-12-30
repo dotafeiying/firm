@@ -1,4 +1,9 @@
 #!/bin/bash
+set -x
+set -e
+
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+cd "$parent_path"
 
 mysql_container_name=firm-db
 web_container_name=firm-web
@@ -6,7 +11,7 @@ mysql_db=firm
 mysql_username=root
 mysql_password=123456
 media_dir=media
-backup_dir=./backup
+backup_dir=${parent_path}/backup
 
 backup_dir_date=${backup_dir}/`date +%Y-%m-%d`
 backup_date=`date +%Y%m%d-%H%M`
@@ -32,13 +37,22 @@ do
         mkdir -p ${backup_dir_date}
 
         echo "2. Backup MySQL to ${backup_dir_date}"
-        docker exec -it ${mysql_container_name} /usr/bin/mysqldump -u ${mysql_username} --password=${mysql_password} ${mysql_db} | gzip > ${backup_dir_date}/website-${backup_date}.sql.gz
+        docker exec ${mysql_container_name} /usr/bin/mysqldump -u ${mysql_username} --password=${mysql_password} ${mysql_db} | gzip > ${backup_dir_date}/website-${backup_date}.sql.gz
 
         echo "3. Backup media to ${backup_dir_date}"
 #        tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz ${media_dir}
+        if [ -z "$(ls -A /tmp/${media_dir})" ];then
+          echo "/tmp/${media_dir} 为空目录.................."
+        else
+          echo "/tmp/${media_dir} 不为空...................."
+          rm -rf /tmp/${media_dir}
+        fi
+
         docker cp ${web_container_name}:/firm/${media_dir} /tmp
-        tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz /tmp/${media_dir}
-        rm -rf /tmp/${media_dir}
+        cd /tmp
+        tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz ${media_dir}
+        rm -rf ${media_dir}
+        cd "$parent_path"
 
         echo -e "-----  Backup Success!  -----\n"
         ;;
@@ -58,7 +72,7 @@ do
         ;;
         r)
         backup_sql=$2
-        backup_meida=$3
+        backup_media=$3
 
         echo -e "\n-----  Current start Restore  -----"
 
@@ -69,7 +83,7 @@ do
         cat ${backup_sql%.*} | docker exec -i ${mysql_container_name} /usr/bin/mysql -u ${mysql_username} --password=${mysql_password} ${mysql_db}
 
         echo "3. Restore Media File"
-        tar -zxvf ${backup_meida} -C /tmp
+        tar -zxvf ${backup_media} -C /tmp
         docker cp /tmp/${media_dir} ${web_container_name}:/firm
 
         echo -e "-----  Restore Done!  -----\n"

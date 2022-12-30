@@ -32,8 +32,12 @@ def test(request):
     logger.debug(request.get_port())
     http = urlsplit(request.build_absolute_uri(None)).scheme
     host = request.META['HTTP_HOST']
+    user_ip = request.META.get('REMOTE_ADDR')
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     print('http',http)
     print('host',host)
+    print('user_ip',user_ip)
+    print('x_forwarded_for',x_forwarded_for)
     return render(request, 'order/test.html', {'form': OrderCreateForm()})
 
 

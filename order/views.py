@@ -1,4 +1,5 @@
 import json
+from urllib.parse import urlsplit
 
 from django.http import JsonResponse, HttpResponseRedirect,HttpResponse
 from django.shortcuts import render,reverse,redirect
@@ -23,7 +24,16 @@ import logging
 logger = logging.getLogger(__name__)
 
 def test(request):
-    print(reverse('order_query') + '?a=b&c=d')
+    logger.debug(request.get_full_path())
+    logger.debug(request.get_host())
+    logger.debug(request.get_raw_uri())
+    logger.debug(request.scheme)
+    logger.debug(request.path_info)
+    logger.debug(request.get_port())
+    http = urlsplit(request.build_absolute_uri(None)).scheme
+    host = request.META['HTTP_HOST']
+    print('http',http)
+    print('host',host)
     return render(request, 'order/test.html', {'form': OrderCreateForm()})
 
 
@@ -171,11 +181,11 @@ def order_pay(request):
             out_trade_no=order_no,  # 订单id
             total_amount=str(total_pay),  # 订单的实付款
             subject='测试订单%s' % order_no,  # 订单标题
-            return_url=reverse('return_url'),
+            return_url=settings.RETURN_URL,
             # return_url='http://127.0.0.1:5000' + reverse('return_url'),
             # notify_url='http://luxijie.asuscomm.com:5000' + reverse('notify_url')  # 可选, 不填则使用默认notify url
-            notify_url = f'{request.scheme}://{request.get_host()}' + reverse('notify_url')  # 可选, 不填则使用默认notify url
-            # notify_url=settings.NOTIFY_URL  # 可选, 不填则使用默认notify url
+            # notify_url = f'{request.scheme}://{request.get_host()}' + reverse('notify_url')  # 可选, 不填则使用默认notify url
+            notify_url=settings.NOTIFY_URL  # 可选, 不填则使用默认notify url
 
         )
 

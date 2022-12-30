@@ -52,7 +52,8 @@ services:
       - .env
     environment:
       - DEBUG=true
-      - NOTIFY=https://www.luxijie.top:679/order/notify_url
+      - RETURN_URL=https://www.luxijie.top:679/order/return_url
+      - NOTIFY_URL=https://www.luxijie.top:679/order/notify_url
       - TZ=Asia/Shanghai
     restart: always
 

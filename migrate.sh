@@ -10,7 +10,8 @@ web_container_name=firm-web
 mysql_db=firm
 mysql_username=root
 mysql_password=123456
-media_dir=/firm/media
+web_workdir=/firm
+#media_dir=/firm/media
 backup_dir=${parent_path}/backup
 
 backup_dir_date=${backup_dir}/`date +%Y-%m-%d`
@@ -48,7 +49,7 @@ do
           rm -rf /tmp/media
         fi
 
-        docker cp ${web_container_name}:${media_dir} /tmp
+        docker cp ${web_container_name}:${web_workdir}/media /tmp
         cd /tmp
         tar -zcvf  ${backup_dir_date}/media-${backup_date}.tar.gz media
         rm -rf media
@@ -81,10 +82,12 @@ do
 
         echo "2. Restore MySQL Databases"
         cat ${backup_sql%.*} | docker exec -i ${mysql_container_name} /usr/bin/mysql -u ${mysql_username} --password=${mysql_password} ${mysql_db}
+        rm ${backup_sql%.*}
 
         echo "3. Restore Media File"
         tar -zxvf ${backup_media} -C /tmp
-        docker cp /tmp/media ${web_container_name}:/firm
+        docker cp /tmp/media ${web_container_name}:${web_workdir}
+        rm -rf /tmp/media
 
         echo -e "-----  Restore Done!  -----\n"
         ;;
